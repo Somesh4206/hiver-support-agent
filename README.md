@@ -7,9 +7,10 @@ retrieves historically similar support cases, generates responses **grounded
 in that historical evidence**, and decides safely between auto-handling and
 escalation — with quantitative evaluation of every component.
 
-> **Current status: Phase 1 (data foundation) — complete and verified.**
-> The assignment mandates a phased build; Phases 2–9 are scoped but
-> deliberately **not implemented** until Phase 1 is working and tested.
+> **Current status: Phases 1–2 complete — data foundation + intent
+> classification foundation (taxonomy, golden set, baselines).** The
+> assignment mandates a phased build; Phases 3–9 are scoped but deliberately
+> **not implemented** until each prior phase is working and tested.
 
 ---
 
@@ -53,10 +54,9 @@ notebooks/01_data_exploration.ipynb (executed, cross-checked)
 web dashboard (Next.js page + /api/phase1/status — this repo's root app)
 ```
 
-Phases 2–9 (not yet built): intent taxonomy & golden set & baselines →
-embedding classifier → FAISS retrieval (Recall@K) → grounded generation →
-escalation policy (false-auto rate) → unified agent → Streamlit app → final
-report.
+Phases 3–9 (not yet built): embedding classifier → FAISS retrieval
+(Recall@K) → grounded generation → escalation policy (false-auto rate) →
+unified agent → Streamlit app → final report.
 
 ## Dataset
 
@@ -70,7 +70,7 @@ and the AppleSupport account-identification workflow: see
 ```bash
 cd hiver-support-agent
 python3 -m venv .venv && source .venv/bin/activate   # optional
-pip install -r requirements.txt                      # pandas, numpy, matplotlib, seaborn, python-dotenv
+pip install -r requirements.txt                      # pandas, numpy, matplotlib, seaborn, python-dotenv, scikit-learn
 cp .env.example .env
 
 # 1) discover the Apple support account id from the data (do not guess it)
@@ -86,6 +86,11 @@ python scripts/prepare_data.py
 
 # 4) EDA summary + charts
 python scripts/run_eda.py
+
+# 5) Phase 2: golden set + baselines
+python scripts/build_golden_set.py sample --n 200
+python scripts/build_golden_set.py build      # validate labels, split, manifest
+python scripts/train_baselines.py            # metrics -> evaluation/results/
 ```
 
 Environment variables (`.env`) — full list in `.env.example`:
@@ -119,7 +124,7 @@ A reconstructed pair (from `conversation_pairs.csv`):
 |---|---|---|
 | 14838 | "iOS 11 is draining the battery on my iPhone 7 twice as fast as iOS 10. Help!" | "We'd like to gather some more information for better troubleshooting. Can you DM us the country you are locate…" |
 
-## Metrics (Phase 1 — actually measured)
+## Metrics (Phases 1–2 — actually measured)
 
 | metric | value |
 |---|---|
@@ -129,12 +134,16 @@ A reconstructed pair (from `conversation_pairs.csv`):
 | customer↔support evidence pairs | 106,137 |
 | avg / median / max turns per conversation | 2.94 / 2 / 282 |
 | avg message length | 100.8 chars · 19.1 words |
-| provisional top topics (customer msgs) | Software/Apps 29.0% · Device/Hardware 14.1% · Connectivity 2.8% |
-| multi-topic customer messages | 9.9% |
+| intent taxonomy classes (Phase 2) | 10 (EDA-anchored + unmatched-pool split) |
+| golden set (Phase 2) | 200 manually labelled · split 142/29/29 · seed 42 |
+| keyword-rules baseline (test) | accuracy 0.483 · macro-F1 **0.391** |
+| majority baseline (test) | accuracy **0.655** · macro-F1 0.079 |
+| TF-IDF + LogReg baseline (test) | accuracy 0.621 · macro-F1 0.078 |
 | structural validations | 7/7 PASS |
 
-Intent-accuracy / F1 / Recall@K / escalation metrics **do not exist yet** —
-they are Phase 2–6 deliverables and will be reported only once measured.
+Recall@K / escalation metrics **do not exist yet** — they are Phase 4–6
+deliverables and will be reported only once measured. Full Phase 2 detail:
+`evaluation/results/baseline_results.json` and `reports/report.md` §6.
 
 ## Repository layout
 
@@ -142,13 +151,14 @@ they are Phase 2–6 deliverables and will be reported only once measured.
 hiver-support-agent/
 ├── data/                  # raw (gitignored) + processed outputs
 ├── notebooks/             # 01_data_exploration.ipynb (executed)
-├── scripts/               # find_author_ids · prepare_data · run_eda · make_synthetic_sample
+├── scripts/               # find_author_ids · prepare_data · run_eda · build_golden_set · train_baselines · make_synthetic_sample
 ├── src/
 │   ├── config.py          # env-driven settings, no magic constants
-│   └── data/              # load · preprocessing · conversations
+│   ├── data/              # load · preprocessing · conversations
+│   └── intents/           # taxonomy · baselines (Phase 2)
+├── evaluation/            # Phase 2: golden set, labels, splits, results
 ├── reports/               # report.md · decision_log.md
-├── evaluation/            # (Phase 2+) golden set & metrics
-├── requirements.txt       # only packages actually used in Phase 1
+├── requirements.txt       # only packages actually used (Phases 1–2)
 ├── .env.example           # configuration template
 └── .gitignore             # keeps the 516 MB corpus out of git
 ```

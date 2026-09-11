@@ -1,11 +1,13 @@
 # Apple Support AI — Python dependencies
-# Phase 1 scope: data pipeline + EDA only. Dependencies for later phases
-# (sentence-transformers, faiss-cpu, streamlit, ...) will be added in the
-# phase that actually uses them — this file only lists packages that are
-# used *now* (assignment rule: "Add only packages that are actually used").
+# Phases 1–2 scope: data pipeline + EDA + baseline classifiers. Dependencies
+# for later phases (sentence-transformers, faiss-cpu, streamlit, ...) will be
+# added in the phase that actually uses them — this file only lists packages
+# that are used *now* (assignment rule: "Add only packages that are actually
+# used").
 
 pandas>=2.2
 numpy>=1.26
 matplotlib>=3.8
 seaborn>=0.13
 python-dotenv>=1.0
+scikit-learn>=1.5

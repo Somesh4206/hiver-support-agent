@@ -2,12 +2,13 @@
 
 **Evidence-Grounded Customer Support Agent** · technical assignment for Hiver
 
-> **Status: Phase 1 complete (data foundation).** This report contains only
-> metrics that were actually computed by executed code — every number below
-> comes from `data/processed/pipeline_run.json` / `eda_summary.json`
-> (full-scale run on the real Kaggle `twcs.csv`, 2026-09-10, 211.8 s, 7/7
-> validations passed). Model-quality metrics (accuracy, F1, Recall@K, …) are
-> Phase 2+ deliverables and are deliberately **not** reported here.
+> **Status: Phases 1–2 complete (data foundation + intent-classification
+> foundation).** This report contains only metrics that were actually computed
+> by executed code — every number below comes from `pipeline_run.json` /
+> `eda_summary.json` (full-scale run on the real Kaggle `twcs.csv`, 2026-09-10,
+> 211.8 s, 7/7 validations passed) and `evaluation/results/baseline_results.json`
+> (Phase 2 baselines, seed 42, 2026-09-11). Later-phase metrics (embedding
+> accuracy, Recall@K, escalation rates) do not exist yet and are not reported.
 
 ---
 
@@ -21,10 +22,20 @@ reconstructed from reply links, and 106,137 customer↔support evidence pairs
 are extracted with conversation identity preserved for leakage-free splitting.
 Exploratory analysis (notebook + dashboard) profiles the corpus and yields a
 provisional topic distribution that will drive the Phase 2 intent taxonomy.
-All outputs passed a 7-point structural validation gate. Phases 2–9
-(classification, retrieval, generation, escalation, agent, UI, final report)
-are scoped but intentionally not implemented until Phase 1 is verified —
-per the assignment's implementation order.
+All outputs passed a 7-point structural validation gate. Phases 3–9
+(retrieval, generation, escalation, agent, UI, final report) are scoped but
+intentionally not implemented until each prior phase is verified — per the
+assignment's implementation order.
+
+**Phase 2 adds the classification foundation:** a 10-class intent taxonomy
+derived from the EDA distribution (plus three classes grounded in a manual
+reading of the unmatched pool), a 200-example **manually labelled golden set**
+(uniform sample of customer-initiated openers, seed 42, conversation-level
+stratified 70/15/15 split, isolation manifest for Phase 4), and three measured
+baselines. The honest headline: with 200 labelled examples, **no learned
+TF-IDF configuration beats the majority baseline on test accuracy**
+(0.621 vs 0.655) while transparent keyword rules win macro-F1 (0.391 vs
+0.079) — the measured motivation for the Phase 3 embedding classifier.
 
 **Headline numbers (real run):** 80,966 AppleSupport conversations · 237,745
 corpus tweets · 106,137 support pairs · avg 2.94 turns/conversation · avg
@@ -109,40 +120,100 @@ account; conversation ids unique; every tweet attached to a conversation.
 
 ## 5. Intent Taxonomy
 
-**Status: provisional (Phase 1) → final in Phase 2.** EDA keyword tagging
-(word-boundary matching) over the 106,137 customer messages gives the
-distribution that the Phase 2 taxonomy must justify itself against:
+**Status: FINAL (Phase 2).** The taxonomy is defined in
+`src/intents/taxonomy.py` — the single source of truth consumed by the
+golden-set builder, the baseline trainer, the dashboard and (unchanged) the
+Phase 3 classifier. It is justified against the Phase 1 EDA distribution
+(`eda_summary.json` provisional topics, word-boundary matching) and a manual
+reading of randomly sampled openers:
 
-| provisional topic | matched | share |
-|---|---|---|
-| Software / Apps | 30,740 | 29.0% |
-| Device / Hardware | 15,015 | 14.1% |
-| Connectivity | 2,975 | 2.8% |
-| Billing / Payments | 2,582 | 2.4% |
-| Account / Apple ID | 2,335 | 2.2% |
-| Repair / Warranty | 1,974 | 1.9% |
-| iCloud / Backup | 1,750 | 1.7% |
-| Refunds / Purchases | 1,568 | 1.5% |
-| Order / Delivery | 1,044 | 1.0% |
-| Security / Privacy | 631 | 0.6% |
-| Subscriptions | 470 | 0.4% |
+| final class | EDA anchor | golden support | typically escalated |
+|---|---|---|---|
+| `software_bug` | Software / Apps 29.0% | 128 | no |
+| `device_hardware` | Device / Hardware 14.1% | 11 | no |
+| `account_icloud` | Account/Apple ID 2.2% + iCloud 1.7% (merged) | 9 | no |
+| `connectivity` | Connectivity 2.8% | 9 | no |
+| `billing_purchases` | Billing 2.4% + Refunds 1.5% + Orders 1.0% + Subscriptions 0.4% (merged) | 5 | **yes** |
+| `repair_warranty` | Repair / Warranty 1.9% | 6 | **yes** |
+| `security_privacy` | Security / Privacy 0.6% | 2 | **yes** |
+| `general_complaint` | from the unmatched pool (reading) | 9 | no |
+| `support_process` | from the unmatched pool (reading) | 6 | **yes** |
+| `other` | unmatched remainder | 15 | **yes** |
 
-Multi-topic messages: **9.9%** — empirical support for the assignment's
-`secondary_intents` / `multi_issue` output design. 53% of messages match no
-provisional keyword, confirming the need for an `Other` category and a
-labelled golden set rather than keyword rules. The final taxonomy (target
-8–12 categories) will be documented with per-class evidence in Phase 2.
+Design rules (decision D13): every EDA topic ≥~2% share earns a class;
+sub-2.5% topics sharing a routing profile are merged so the merged class can
+reach usable golden support; the 53% unmatched pool is split by observed
+behaviour — pure venting (`general_complaint`), meta-complaints about
+reaching support (`support_process` — the natural escalation trigger), and
+the remainder (`other`). Multi-topic messages remain 9.9% of the corpus —
+empirical support for the assignment's `secondary_intents` / `multi_issue`
+output design, deferred to the Phase 3 classifier head.
 
-## 6. Baselines — *planned, Phase 2*
+**Corpus period note:** 99.5% of the 80,244 customer-initiated openers fall
+in Sep–Dec 2017 (the iOS 11 rollout window of the corpus). The golden set —
+like the corpus — is dominated by iOS 11 era complaints; all Phase 2 metrics
+measure this historical window, not a balanced topic mix.
 
-Majority-class and TF-IDF + Logistic Regression baselines (accuracy, macro
-P/R/F1, weighted F1, confusion matrix) are Phase 2 deliverables. Not run yet;
-no numbers exist.
+## 6. Golden Set & Baselines — *measured (Phase 2)*
+
+**Golden set** (`evaluation/golden_set.csv`): 200 examples drawn uniformly
+(no rare-class boosting — the golden set must estimate performance on the
+*natural* distribution; rare-class scarcity is a documented limitation, not a
+sampling bug) from the 80,244 customer-initiated conversation openers, seed
+42. Every message was read and labelled **manually** by meaning; the
+labelling worksheet intentionally shows no keyword hints to avoid biasing
+labels. An automated gate validates: every row labelled exactly once, labels
+restricted to taxonomy classes, no unknown ids (build exits non-zero on
+failure). Split: conversation-level, stratified by label, 70/15/15 →
+**142 / 29 / 29**. A manifest (`golden_conversation_ids.json`) reserves all
+200 conversation ids so Phase 4 retrieval never indexes golden evidence.
+
+**Baselines (test split, 29 examples, seed 42):**
+
+| baseline | accuracy | macro-F1 | weighted-F1 |
+|---|---|---|---|
+| keyword rules (Phase 1 EDA topics → labels) | 0.4828 | **0.3906** | 0.5298 |
+| majority (`software_bug`) | **0.6552** | 0.0792 | 0.5187 |
+| TF-IDF + LogReg | 0.6207 | 0.0783 | 0.5127 |
+
+TF-IDF + LogReg details: word 1–2 grams, English stopwords, sublinear tf;
+hyperparameters (C=10.0, class_weight=balanced, min_df=1) selected by 5-fold
+CV **on the train split** with criterion mean(accuracy, macro-F1) — tuning
+on the 29-example validation split proved too noisy (a val-selected config
+scored 0.412 val macro-F1 but 0.104 test macro-F1; recorded in
+`baseline_results.json`). Train accuracy 1.0 (the 142-example train split is
+memorisable); CV-on-train macro-F1 0.16 ± 0.08.
+
+**Failure analysis of the learned baseline (measured, not asserted):** the
+confusion matrix shows 25 of 29 test messages predicted `software_bug` (18
+correct). Every rare-class test example (device_hardware 2, account_icloud 1,
+connectivity 1, billing 1, repair 1, general_complaint 1, support_process 1,
+other 2) was misclassified — mostly into `software_bug`. Keyword rules, by
+contrast, perfectly classified the rare classes present in test
+(account_icloud, connectivity, billing: P=R=F1=1.0 each) but recall only 47%
+of `software_bug`. **Conclusion:** at n=200, learning generalises badly on
+short noisy tweets; semantics-aware embeddings (Phase 3) or a hybrid
+keywords+learned router are the measured next steps. The val split is
+retained as a held-out sanity check and test was untouched until final
+evaluation.
+
+Reproduce:
+
+```bash
+python scripts/build_golden_set.py sample --n 200   # deterministic worksheet
+# (label evaluation/labeling_worksheet.jsonl → evaluation/golden_labels.json)
+python scripts/build_golden_set.py build            # validate + split + manifest
+python scripts/train_baselines.py                  # metrics → evaluation/results/
+```
 
 ## 7. Main Classifier — *planned, Phase 3*
 
 Embedding-based classifier (all-MiniLM-L6-v2 → simple head) returning intent,
-confidence, secondary intents, multi-issue flag. Not implemented.
+confidence, secondary intents, multi-issue flag. Not implemented — but now
+*strongly motivated by measurement*: the Phase 2 baselines show lexical
+TF-IDF features cannot separate 10 classes from 142 examples (test macro-F1
+0.078); pre-trained semantic embeddings are the designed remedy. Requires
+`sentence-transformers` (not yet installed).
 
 ## 8. Retrieval System — *planned, Phase 4*
 
@@ -160,27 +231,42 @@ assignment §16 and the "based on similar historical support cases" framing.
 Rule-based, explainable policy consuming intent confidence, retrieval score,
 security signals; false-auto rate as the primary safety metric.
 
-## 11. Evaluation — *Phase 1 results + planned metrics*
+## 11. Evaluation — *Phases 1–2 results + planned metrics*
 
 **Executed in Phase 1:** dataset scan statistics (§3), cleaning report (§4),
 reconstruction diagnostics (§4), 7/7 structural validations, EDA distributions
 (§5, notebook `01_data_exploration.ipynb` executed end-to-end with 16/16
 cross-check assertions against `eda_summary.json`).
 
-**Planned:** intent metrics (Phase 2/3), Recall@K (Phase 4), reply scoring
-(Phase 5), escalation precision/recall/F1/false-auto (Phase 6).
+**Executed in Phase 2:** golden-set validation gate (all 200 rows labelled
+exactly once; labels restricted to taxonomy; splits stratified), baseline
+metrics on val/test (accuracy, macro/weighted P/R/F1, per-class reports,
+confusion matrix — full numbers in `evaluation/results/baseline_results.json`,
+dashboard-ready summary in `phase2_summary.json`), hyperparameter-selection
+grid (16 configs, CV-on-train), and the golden-set isolation manifest.
+
+**Planned:** embedding intent metrics (Phase 3), Recall@K (Phase 4), reply
+scoring (Phase 5), escalation precision/recall/F1/false-auto (Phase 6).
 
 ## 12. Results
 
-See §1 (headline numbers), §3–§5 (detail), and `data/processed/` artifacts:
-`applesupport_tweets.csv` (237,745 rows), `conversations.csv` (80,966),
-`conversation_pairs.csv` (106,137), `pipeline_run.json`, `eda_summary.json`,
-`charts/` (6 PNGs). Reproduce with:
+See §1 (headline numbers), §3–§6 (detail), and the artifacts:
+`data/processed/` — `applesupport_tweets.csv` (237,745 rows),
+`conversations.csv` (80,966), `conversation_pairs.csv` (106,137),
+`pipeline_run.json`, `eda_summary.json`, `charts/` (6 PNGs);
+`evaluation/` — `golden_set.csv` (200 rows), `golden_labels.json`,
+`labeling_worksheet.jsonl`, `split_assignments.csv`,
+`golden_conversation_ids.json`, `sampling_frame.json`,
+`results/baseline_results.json`, `results/phase2_summary.json`.
+Reproduce with:
 
 ```bash
 python scripts/find_author_ids.py     # verify APPLE_SUPPORT_AUTHOR_ID
 python scripts/prepare_data.py        # full-scale: ~212 s, <1 GB RAM
 python scripts/run_eda.py             # EDA summary + charts
+python scripts/build_golden_set.py sample --n 200 && \
+  python scripts/build_golden_set.py build    # golden set + splits
+python scripts/train_baselines.py     # baseline metrics
 ```
 
 ## 13. Failure Analysis
@@ -222,24 +308,40 @@ Data-quality findings from the executed run (all handled + reported):
 
 ## 15. Limitations
 
-* Provisional topics are keyword heuristics, not a classifier; final taxonomy
-  lands in Phase 2.
+* **Golden set is small (200) and severely class-imbalanced** — `software_bug`
+  holds 128/200 examples; rare classes have 1–2 test examples, so per-class
+  test numbers are directional only. This is a property of the natural
+  distribution being estimated, not a sampling bug; growing the golden set
+  (or stratified over-sampling of rare classes for *training only*) is the
+  Phase 3 lever.
+* **Corpus period concentration:** 99.5% of openers are Sep–Dec 2017 (iOS 11
+  rollout) — metrics measure that window (§5 period note).
+* Provisional Phase 1 topics remain keyword heuristics (now subsumed by the
+  taxonomy and reused as the keyword baseline).
 * Closure truncates ultra-deep threads beyond the pass budget (0.017% of
   tweets; no pair loss).
 * The EDA "conversations" count for the whole dataset (794,335) counts
   conversation *starters* — threads whose starter is missing from the corpus
   are not included in that total.
 * Reply link targets (shared URLs) are not resolvable in the dataset.
-* English-only corpus; no language detection performed.
+* English-only corpus; a few non-English messages are present and were
+  labelled `other` where not confidently classifiable (documented in the
+  labelling method).
+* Single manual labeler (the author); inter-rater agreement is not measurable
+  — mitigated by the documented taxonomy definitions, examples and the
+  automated validation gate.
 
 ## 16. Future Improvements
 
-Phases 2–9 per the assignment: golden set + conversation-level splits +
-baselines (2); embedding classifier + intent evaluation + failure analysis
-(3); FAISS retrieval + Recall@K (4); grounded generation (5); escalation +
-false-auto evaluation (6); unified agent (7); Streamlit app (8); final report
-(9). Engineering follow-ups: parallelise chunk passes; persist the closure
-frontier to resume interrupted runs; add dataset drift checks.
+Phases 3–9 per the assignment: embedding classifier + intent evaluation +
+failure analysis (3); FAISS retrieval + Recall@K (4); grounded generation
+(5); escalation + false-auto evaluation (6); unified agent (7); Streamlit
+app (8); final report (9). Engineering follow-ups: grow the golden set with
+a second labelling pass (rare classes have 1–2 test examples); hybrid
+keywords+learned router to combine the keyword baseline's rare-class
+precision with learned context sensitivity; parallelise chunk passes;
+persist the closure frontier to resume interrupted runs; add dataset drift
+checks.
 
 ## 17. Conclusion
 
@@ -247,6 +349,11 @@ Phase 1 is complete and verified: the real twcs corpus loads, validates and
 filters to 80,966 AppleSupport conversations; threads are reconstructed
 faithfully (structural ordering, noise handled); 106,137 evidence pairs are
 extracted with leakage-safe conversation identity; EDA is executed, charted
-and cross-checked across three consumers. The foundation for every later
-phase exists and is reproducible from configuration. Phase 2 may begin on
-request.
+and cross-checked across three consumers. Phase 2 is complete and verified on
+top of it: a 10-class EDA-grounded taxonomy, a validated manually-labelled
+golden set with leakage-free conversation-level splits, and three measured
+baselines whose honest failure analysis (majority wins accuracy, keywords win
+macro-F1, the learned baseline collapses) precisely motivates the Phase 3
+embedding classifier. Everything is reproducible from configuration, and the
+Phase 4 retrieval corpus already excludes golden conversations via the
+isolation manifest.

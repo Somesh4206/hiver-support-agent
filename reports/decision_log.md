@@ -180,11 +180,98 @@ requirement for Phases 5–6 (generation must phrase retrieved content as
 
 ---
 
-## Planned decisions (Phases 2+)
+## D13. Taxonomy derived from EDA + manual reading of the unmatched pool *(Phase 2)*
 
-The following are recorded as *intent*, not yet implemented: conversation-level
-70/15/15 splits and golden-set isolation (Phase 2); majority + TF-IDF/LogReg
-baselines before any embeddings (Phase 2); all-MiniLM-L6-v2 embeddings with a
-simple classifier head (Phase 3); FAISS for local vector retrieval (Phase 4);
-rule-based, explainable escalation with confidence/retrieval thresholds from
-configuration (Phase 6); false-auto rate as the primary safety metric (Phase 6).
+**Decision:** The final 10-class taxonomy (`src/intents/taxonomy.py`) keeps
+every EDA provisional topic above ~2% share as its own class, merges
+sub-2.5% topics that share a routing profile (Account+iCloud;
+Billing+Refunds+Orders+Subscriptions), and splits the 53% keyword-unmatched
+pool into three observed behaviours (venting / support-process meta-complaints
+/ other). Each class carries an EDA anchor, escalation hint and examples;
+`typically_escalated` is recorded per class for Phase 6.
+
+**Why:** The assignment forbids inventing a taxonomy without supporting
+analysis. The EDA distribution (measured over 106,137 messages) is the
+quantitative justification; the unmatched-pool split is justified by reading
+50 random openers — pure venting and "let me talk to a human" complaints are
+routing-relevant behaviours a keyword topic list cannot express. Merging keeps
+rare classes from having unusable golden support (~1 example).
+
+**Alternatives rejected:** keeping all 11 EDA topics separate (billing 2.4%
+alone ≈ 5 golden examples — too few); an `unmatched` dump class (mixes
+escalation-worthy and not); splitting Software/Apps (29%) into OS vs app
+faults (the app slice would land ~5% ≈ 10 examples).
+
+---
+
+## D14. Golden set: uniform sample, manual labelling, blind worksheet, hard validation gate *(Phase 2)*
+
+**Decision:** 200 conversation openers sampled uniformly (seed 42) from the
+80,244 customer-initiated roots — no rare-class boosting. Labels written by
+hand after reading every message, from a worksheet that shows NO keyword
+hints. `build_golden_set.py build` refuses to produce artifacts unless every
+row is labelled exactly once with a valid taxonomy label.
+
+**Why:** The golden set must estimate performance on the *natural*
+distribution (accuracy on this corpus is the deployment-relevant number);
+boosting would bias it. Blind labelling avoids circularity — labelling from
+the same keywords that drive the keyword baseline would inflate that
+baseline. The gate makes "working and tested" checkable: invalid or missing
+labels exit non-zero. Limitations honestly recorded: single labeler, rare
+classes with 1–2 test examples (report §15).
+
+**Alternatives rejected:** weak/distant supervision from the Phase 1 keywords
+(circular — the keyword baseline would score ~1.0); LLM-assisted labelling
+(the assignment expects human judgement for the golden set; also unverifiable
+here); 500+ examples (labelling cost vs marginal metric stability).
+
+---
+
+## D15. Conversation-level stratified split + golden isolation manifest *(Phase 2)*
+
+**Decision:** Splits key on `conversation_id` (70/15/15, stratified by label,
+per-class rounding to train, seed 42). `golden_conversation_ids.json` lists
+all 200 conversation ids for Phase 4 retrieval to exclude from its evidence
+index.
+
+**Why:** Spec §9 demands conversation-level splitting (tweet-level splits
+leak near-duplicate texts across train/test). Stratification keeps every
+class present in val/test where its support allows it. The manifest enforces
+golden-set isolation — evaluation material must never become retrieval
+evidence — which is only possible because D4 preserved conversation identity
+end-to-end.
+
+---
+
+## D16. Baselines: measure honestly, tune on train-CV, report the failure *(Phase 2)*
+
+**Decision:** Three baselines on the golden set — keyword rules (Phase 1
+topics mapped to labels, word-boundary matching per D11), majority class,
+and TF-IDF+LogReg with a 16-config hyperparameter grid selected by 5-fold CV
+ON THE TRAIN SPLIT (criterion: mean(accuracy, macro-F1)). Val stays a
+held-out sanity check; test is untouched until the final evaluation. The
+headline result is reported as measured: majority wins accuracy (0.655),
+keyword rules win macro-F1 (0.391), the learned baseline collapses to
+`software_bug` (0.621 / 0.078).
+
+**Why:** Tuning on the 29-example val split was tried first and produced a
+config (C=0.01, balanced) that scored 0.412 val macro-F1 but 0.104 on test —
+selection noise, recorded in `baseline_results.json`. Train-CV uses ~5× more
+data for selection. The composite criterion exists because accuracy-only
+picks a majority-collapser while macro-only picks an accuracy-collapser —
+the assignment needs both numbers to be meaningful. Reporting the collapse
+is the point: it is the measured motivation for Phase 3 embeddings, and the
+confusion matrix (25/29 predicted `software_bug`) makes the failure mode
+inspectable rather than asserted.
+
+---
+
+## Planned decisions (Phases 3+)
+
+The following are recorded as *intent*, not yet implemented: all-MiniLM-L6-v2
+embeddings with a simple classifier head, trained on the golden train split
+with rare-class over-sampling considered (Phase 3); FAISS for local vector
+retrieval over the 106,137 pairs with golden conversations excluded (Phase
+4); rule-based, explainable escalation with confidence/retrieval thresholds
+from configuration (Phase 6); false-auto rate as the primary safety metric
+(Phase 6).
