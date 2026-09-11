@@ -1,0 +1,201 @@
+conversation_id,tweet_id,created_at,author_id,text,label,split
+1007813,1007813,Sun Oct 22 19:29:10 +0000 2017,358486,"why is you latest iOS so buggy, apps not working correctly, glitches between apps (and in app). It’s frustrating.",software_bug,train
+1020302,1020302,Sun Oct 22 21:44:08 +0000 2017,361433,my App Store is not working!!!!,software_bug,test
+1028128,1028128,Thu Oct 12 17:37:43 +0000 2017,363305,Anything you guys can do with a pair of PowerBeats3 that didn’t last a month with no damage?,repair_warranty,train
+1033250,1033250,Sat Oct 14 17:55:45 +0000 2017,364460,Thank you @115858 for RUINING my phone with iOS11 @AppleSupport @4305 😡😡😡 #ios11,general_complaint,train
+1058938,1058938,Mon Oct 23 04:04:01 +0000 2017,370010,My phone is charging on the charger and my battery percentage is going down....... please explain @115858,device_hardware,val
+1075495,1075495,Fri Oct 13 12:56:14 +0000 2017,373749,the new system update is crap!!! Messing with my music and starting on its own😒 fix it!!,software_bug,train
+11126,11126,Wed Nov 01 00:46:28 +0000 2017,118102,", your new iOS 11.1 not resolve the calendar problem. 😡#iOS11 #iosfail",software_bug,test
+1118221,1118221,Sun Oct 15 03:22:26 +0000 2017,383852,"@115858 can’t send videos to non iPhone users after last 2 updates,reset to factory settings re signed in to Apple ID thoughts?",software_bug,train
+1122780,1122780,Sun Oct 15 06:15:05 +0000 2017,384804,can’t download and open epub files to ibooks. whenever i download an epub file it appears for a second and it disappears.,software_bug,test
+1140323,1140323,Sat Oct 14 19:29:34 +0000 2017,388433,"Setting up fam sharing, but kept asking for payment method. I've set up Paypal in account, can I not use this for fam sharing?",billing_purchases,train
+1148857,1148857,Tue Oct 24 12:59:28 +0000 2017,390360,how do I deauthorize computers I am logged into via iTunes if I do not currently have access to any of those machines?,account_icloud,train
+1161968,1161968,Tue Nov 07 14:21:46 +0000 2017,393380,I️ am over this whole I️ thing. Get it the hell together @AppleSupport,software_bug,train
+1201168,1201168,Sun Oct 15 23:07:35 +0000 2017,402239,Just upgraded to #HighSierra & now Mail will not open. Only 1 bounce& then not responding.,software_bug,test
+120620,120620,Thu Nov 23 23:23:39 +0000 2017,142816,I can not close apps while on my iphoneX (during an active call),software_bug,train
+1301357,1301357,Thu Oct 26 23:48:08 +0000 2017,138861,is Apple Music currently down? If I click a song it says “you are already a member....” But won’t play,software_bug,train
+1301899,1301899,Fri Oct 27 00:02:56 +0000 2017,424257,my ft don’t work what’s good?? @AppleSupport @115858,software_bug,train
+1357328,1357328,Fri Oct 27 17:17:48 +0000 2017,436458,wanna explain how I can call/ receive calls after the IOS 11.0.3?,software_bug,train
+13580,13580,Wed Nov 01 01:57:40 +0000 2017,118833,@AppleSupport buggie spotted,software_bug,train
+1369586,1369586,Fri Oct 27 21:45:34 +0000 2017,438795,🤔 @AppleSupport,other,train
+1411629,1411629,Thu Nov 02 00:32:00 +0000 2017,448089,FIX THE PROBLEM WITH MY KEYBOARD,software_bug,val
+1413230,1413230,Thu Nov 02 00:53:51 +0000 2017,448426,aye fix my phone. this question marks pissing me off,software_bug,val
+1416064,1416064,Thu Nov 02 02:09:02 +0000 2017,449096,what’s going on with these question marks??,software_bug,train
+1416937,1416937,Mon Oct 16 17:39:10 +0000 2017,449321,heads ups @AppleSupport I’m having an issue updating to the latest MacOS on my MacBook,software_bug,train
+1442380,1442380,Thu Nov 02 04:09:44 +0000 2017,454674,I need y’all to fix this weird text bug right now @115858,software_bug,val
+1458787,1458787,Fri Nov 03 19:43:51 +0000 2017,458604,"Thanks, @AppleSupport",other,train
+1459834,1459834,Thu Nov 02 18:42:09 +0000 2017,458842,What’s wrong with the letter “i” @115858 why is it sending an “A with a ? In a box” ???????,software_bug,train
+1469309,1469309,Thu Nov 02 23:04:15 +0000 2017,461025,What is going on with my I @AppleSupport ????,software_bug,train
+1484050,1484050,Fri Nov 03 02:17:06 +0000 2017,117098,i️ kno a lot of females dating wack ass niggas. but yet ... nvm. 🤦🏽‍♂️,other,train
+1488856,1488856,Fri Nov 03 04:16:43 +0000 2017,465807,Hey apple the new update sucks! nothing works,general_complaint,train
+151504,151504,Fri Nov 24 14:12:08 +0000 2017,150600,i want to update my payment method but it keeps saying the date cant be in the past when its well in the future.,billing_purchases,train
+1519166,1519166,Fri Nov 03 14:35:26 +0000 2017,472354,why does my phone replace “with “A ?.. been doing that since the update,software_bug,train
+1522730,1522730,Fri Nov 03 16:07:16 +0000 2017,340154,#iOS11 drains my battery!!! Yo @AppleSupport fix this situation!,software_bug,train
+1544927,1544927,Sat Nov 04 01:31:44 +0000 2017,476560,do you have a price quote on getting a screen fixed for iPhone 7 Plus?,repair_warranty,test
+1557815,1557815,Tue Nov 21 14:55:45 +0000 2017,481521,I received an email saying my account status has been changed could this be spam?,security_privacy,train
+1623339,1623339,Sun Nov 05 10:45:56 +0000 2017,497271,My 7 Plus has been freezing at least twice a day since the iPhone X/IOS 11 update came out @115858,software_bug,train
+1626246,1626246,Sun Nov 05 14:23:46 +0000 2017,497979,@AppleSupport Will I get warranty coverage of iPhone X in India if I buy a network unlocked phone from USA??,repair_warranty,train
+1627537,1627537,Sun Nov 05 04:05:20 +0000 2017,498285,@115858 App Store app badge shows “5” but I tap it and go to updates- no updates. Hasn’t worked right since iOS10. #iOS11 #WTF,software_bug,train
+1638724,1638724,Sun Nov 05 15:18:43 +0000 2017,501093,How do you lower the screen down on the iPhone X like you used to be able to by double tapping the Home button? @AppleSupport,other,train
+1638776,1638776,Sun Nov 05 15:15:06 +0000 2017,501110,Yo @115858 figure out why my phone adds some bullshit when i type i,software_bug,train
+1650175,1650175,Sun Nov 05 21:20:41 +0000 2017,504040,Bruh @115858 fix our mf phones & get these question mark boxes outta here,software_bug,train
+1657725,1657725,Mon Nov 06 02:54:18 +0000 2017,505794,@115858 can we fix this problem???? Why can’t we see the letter “I️” anymore??,software_bug,train
+1658647,1658647,Mon Nov 06 03:32:40 +0000 2017,506055,"if you do not fix this ? thing when I️ type and I️, then I️ am going to have to strongly consider getting an Android......",software_bug,train
+1673516,1673516,Mon Nov 06 12:39:51 +0000 2017,509234,Have you ever wanted to punch someone in the face? Like I️ have SUCH a desire to punch this one person in the face as hard as I️ can,other,test
+1675440,1675440,Mon Nov 06 05:31:04 +0000 2017,509729,I️ can’t type the letter after h on my keyboard. Please help.,software_bug,train
+1677011,1677011,Mon Nov 06 06:43:11 +0000 2017,510105,my friend has updated his 8plus with 11.1then the phone has stopped working and keeps restarting itself until it heat and dies,software_bug,train
+1681655,1681655,Mon Nov 06 12:55:47 +0000 2017,511264,"what the hell is going on?! Letters not working, phone is lagging, this iOS update is trash!",software_bug,train
+1681663,1681663,Mon Nov 06 11:48:15 +0000 2017,511268,"why are my husband’s alarms going off 3 minutes late, consistently",software_bug,train
+1690095,1690095,Tue Oct 17 16:28:24 +0000 2017,513093,All I’m saying is my phone didn’t die this fast before I updated the new IOS 🙃🙃🙃 @115858,software_bug,train
+1715215,1715215,Tue Nov 07 02:31:08 +0000 2017,519464,The “I️” problem ? Is there a fix?,software_bug,val
+1733789,1733789,Tue Nov 07 03:44:50 +0000 2017,523597,@AppleSupport you gotta fix the I️ like for real,software_bug,test
+1735010,1735010,Tue Nov 07 04:19:00 +0000 2017,523919,Why do some ppl not have the 👀 problem @115858 it ain’t funny 👀 pay too much for y’all to be making mistakes we better have an update tmrw,software_bug,test
+1735025,1735025,Tue Nov 07 04:26:50 +0000 2017,523925,FIX THIS I️ BS. It’s annoying as hell.,software_bug,train
+1744842,1744842,Tue Nov 07 06:38:47 +0000 2017,526156,fix this stupid I️ problem,software_bug,train
+1750377,1750377,Tue Nov 07 15:16:07 +0000 2017,527495,Can you please get it together? My phone and millions of other keep getting their I's changed to an X or A with Lines. Fix it,software_bug,train
+1760346,1760346,Tue Nov 07 22:18:46 +0000 2017,529821,iOS11.1 Unable to Verify... No internet connection when clearly there is. iTunes no longer recognises my phone. #HaveYouGotMyBack,software_bug,val
+1762075,1762075,Tue Nov 07 19:09:06 +0000 2017,530197,"My iPhone X keeps losing internet connection! Speed Tested it against my 7+, 7+ won every time! @115858",connectivity,train
+1762856,1762856,Sat Nov 25 05:39:46 +0000 2017,530381,I love when my fucking 10 month old iPhone 7+ breaks for no God damn reason 😍 @AppleSupport,device_hardware,test
+1768860,1768860,Tue Nov 07 21:56:27 +0000 2017,304150,"ya done messed up, @115858. it was like this for so long, my phone wants to autocorrect i to the dumb error",software_bug,train
+1772187,1772187,Tue Nov 07 23:21:51 +0000 2017,532651,"So I️ have 280 so I’m going use this time to thank everyone following me even though I️ get annoying. Y’all are the real ones. Now that I️ have 280 it’s gonna get worse... so thank you!! So stick around. Also @123765, you fucked up with this update. Should of stayed with 140",general_complaint,test
+1773601,1773601,Wed Nov 08 02:46:43 +0000 2017,533047,please help i️ don’t understand why but every time i️ type “i️” it comes up as i️,software_bug,train
+1779,1779,Tue Oct 31 22:04:38 +0000 2017,116102,my PHONE app doesn’t work. Thank you for updating my #iPhone to an #ipod,software_bug,train
+1779220,1779220,Thu Nov 02 20:48:16 +0000 2017,534572,Hey @115858 stop sucking and fix this “I️” problem thank you,software_bug,test
+1786025,1786025,Wed Oct 11 14:05:31 +0000 2017,536608,how much does it cost to replace a screen on a series 1 Watch? My AppleCare just ended 2 months ago :’(,repair_warranty,val
+1786691,1786691,Wed Oct 11 15:23:28 +0000 2017,536774,with the new update my iPhone 7 stops playing music when it goes to sleep. Also the battery is going fast. Meh.,software_bug,train
+1796204,1796204,Thu Oct 12 14:14:01 +0000 2017,388595,#ios11 bug camera bug!! Someone tell the company to fix this please @115858,software_bug,train
+1802996,1802996,Fri Oct 13 12:21:57 +0000 2017,541763,"Can you make your iCal app stop deleting my saved date events, oh and stop doubling other's that would be great.",software_bug,test
+1858436,1858436,Thu Oct 19 13:22:01 +0000 2017,555697,how do I roll my iPhone SE back to iOS 10?? iOS 11 has fucked up my phone royally. Thanks.,software_bug,val
+1872065,1872065,Fri Oct 20 02:48:45 +0000 2017,559027,"please do something IOS 11.03 is draining my battery, slowed everything! Phone stuck with every app... unreponsive!",software_bug,train
+1882044,1882044,Sat Oct 21 16:29:24 +0000 2017,561640,Why did the new iPhone update do nothing but kill my battery life now?? @115858,software_bug,test
+1882146,1882146,Sat Oct 21 16:45:45 +0000 2017,561675,why I’m not getting any useful answer every time I contact your support? ..It’s almosta month now,support_process,train
+1882367,1882367,Sat Oct 21 18:02:51 +0000 2017,561733,voiceover not reading sms properly on ios11.03 possibly needs a bug fix #accessibility,software_bug,train
+188655,188655,Tue Oct 03 20:16:38 +0000 2017,160278,there’s not improvement I’ve updated the OS to 11.0.1 but nothing 😐,software_bug,train
+1887587,1887587,Mon Oct 23 14:21:47 +0000 2017,562967,I think there’s something wrong with my battery. Currently gets too hot doing normal tasks. iPhone 6s Plus,device_hardware,train
+1896225,1896225,Tue Oct 24 12:53:02 +0000 2017,565188,Dear @AppleSupport Are there any SLAs for people waiting at service center in India?Treated like shit. It's been 30mins and none has spoken!,support_process,train
+1897675,1897675,Tue Oct 24 17:37:18 +0000 2017,565583,"my phone updated without my permission now I hate it!! It’s slow keeps freezing, and is getting hot every since the update.",software_bug,train
+1906187,1906187,Wed Oct 25 09:36:15 +0000 2017,567988,I cannot use my iPhone after an upgrade - serious stuff - travel ticket to work as well as all communication. Please advise.,software_bug,test
+1907054,1907054,Wed Oct 25 14:39:08 +0000 2017,568204,marvelous my phone is doing this spectacular trick where it doesn't cut on again... thanks @115858,device_hardware,val
+1921751,1921751,Fri Oct 27 02:02:42 +0000 2017,572090,#OMG! 1+2+3=23 in #iOS10 & #iOS11 calculator. Any fixes @AppleSupport?,software_bug,train
+1941112,1941112,Sun Oct 29 22:20:45 +0000 2017,577269,can you guys fix this update? My iPhone battery is dying like no tomorrow...,software_bug,train
+1942526,1942526,Mon Oct 30 00:38:46 +0000 2017,577601,Just waited 41 mins on the phone for @115858 @AppleSupport just to get disconnected,support_process,train
+1951473,1951473,Sun Oct 29 13:55:04 +0000 2017,579548,why is this happening since ios11 update? App icons over lapping occasionally when I scroll pages left and right,software_bug,train
+1967963,1967963,Tue Oct 31 13:58:55 +0000 2017,583138,can somebody please explain why I️ can’t type the letter after H without this coming up.... I️,software_bug,train
+1975815,1975815,Tue Oct 31 15:31:11 +0000 2017,585110,Since upgrading to ios11 my iPhone6 is pretty unusable. Frequently crashes and restarts. Battery dies at 30%. Sluggish. 😞,software_bug,train
+1980402,1980402,Tue Oct 31 21:52:04 +0000 2017,586237,My Guest Account is still appearing even though it is turned off in Users & Groups.,account_icloud,train
+1990486,1990486,Thu Nov 02 14:44:03 +0000 2017,589076,A total disappointment the new actualization IOS 11 and all the patches!! The battery doesn’t work like before @AppleSupport @115858,software_bug,train
+1990561,1990561,Thu Nov 02 23:58:06 +0000 2017,589095,this update is trash.. I’m tired of my mf music stopping itself.. why y’all put this stuff out if it got so many problems still..😑,software_bug,train
+1999291,1999291,Thu Nov 02 18:40:02 +0000 2017,591148,why has my phone stopped recognizing the letter I️ by itself on my phone?,software_bug,val
+2001818,2001818,Fri Nov 03 16:31:31 +0000 2017,591929,what’s the deal with my phone autocorrecting “I” into I️,software_bug,test
+2002553,2002553,Fri Nov 03 17:55:29 +0000 2017,592155,Can @115858 fix this keyboard glitch please,software_bug,train
+2003343,2003343,Fri Nov 03 19:32:30 +0000 2017,339426,"I️ Enough, @115858, seriously... too big of a company to let this shit linger, @AppleSupport. Iiiiiiiiiii",software_bug,train
+2004175,2004175,Fri Nov 03 21:21:41 +0000 2017,592656,"hello! Hello, can y’all please get I️t together. I️ look crazy right now.",software_bug,train
+2009159,2009159,Sat Nov 04 14:33:56 +0000 2017,594113,"iOS 11 update is killing my battery (even worst), i hate @115858",software_bug,train
+2014006,2014006,Sun Nov 05 13:18:56 +0000 2017,487228,Eye just want to be able to text the letter after ‘h’ and before ‘j’. @115858 @AppleSupport please fix this already.,software_bug,train
+2015310,2015310,Sun Nov 05 15:49:14 +0000 2017,595929,hello give us an update i’m tired of seeing question mark boxes @115858,software_bug,train
+2019032,2019032,Sat Nov 04 19:05:49 +0000 2017,597095,"Alright @115858 this “I️” nonsense is really pissing me off. Just because the new iPhone X came out, doesn’t mean we shouldn’t be able to communicate properly without it.",software_bug,train
+2022041,2022041,Mon Nov 06 03:19:17 +0000 2017,598024,I’m getting annoyed with ios11. Whenever WiFi is on it affects my 3g cos it keeps searching for a hotspot n affects surfing,connectivity,train
+2039405,2039405,Tue Nov 07 18:40:02 +0000 2017,603014,FFS @115858 @AppleSupport. Every time there's an update my phone starts to play up. Same issue with my last handset after an update 😡📱💩,software_bug,train
+2046588,2046588,Thu Oct 05 01:31:20 +0000 2017,605266,Jesus fucking Christ my phone keeps dying at like 90% y'all ain't shot prolly gon get a samsung @AppleSupport,device_hardware,test
+2047816,2047816,Thu Oct 05 11:18:05 +0000 2017,605612,After updating to #iOS11 my battery draining so faster. I am using 7+ model. Why you did this to me ! 😡😡😡,software_bug,val
+2050336,2050336,Thu Oct 05 17:26:37 +0000 2017,606331,iOS11 is so glitchy @AppleSupport @115858 no progress at all,software_bug,train
+2051153,2051153,Thu Oct 05 19:44:48 +0000 2017,590032,Thanks @115858 for the worst iPhone update of all time like you can have it back I don want,general_complaint,val
+2054432,2054432,Mon Sep 25 12:44:07 +0000 2017,115858,iPhone 8 and iPhone 8 Plus. A new generation of iPhone. Available now.,other,train
+2062271,2062271,Fri Oct 06 09:13:46 +0000 2017,609910,Is anyone else having any problems with volume since updating the new iOS can’t hear a thing @AppleSupport,software_bug,val
+2062504,2062504,Fri Oct 06 08:45:15 +0000 2017,489331,you have misspelled a word in your page.,other,test
+208146,208146,Thu Oct 05 00:03:01 +0000 2017,165238,"I upgraded ipod touch to OS11 and now I get no album art on my honda 2015 civic touch screen, WTF?!?",software_bug,train
+2096011,2096011,Tue Oct 10 14:01:48 +0000 2017,619228,"X Bug, the home bar of the iPhone ""X"" appears as soon as a keyboard is active... @130713 @156470 @115858",software_bug,train
+2105278,2105278,Wed Nov 08 02:13:33 +0000 2017,621423,It’s been two years since I️ hurt my back. Tonight I️ deadlifted 365. I️ am 35 pounds away from the weight that hurt me. I’m gonna get it. #fitness #powerlifting #r247 #feelsgoodman,other,train
+2111480,2111480,Wed Nov 08 13:15:16 +0000 2017,153617,why I can't restore my WhatsApp chat !!!,account_icloud,train
+2114715,2114715,Wed Nov 08 15:13:26 +0000 2017,623469,"Not sure how to use @115948 on my Samsung Galaxy Note 8, Google Play says it is not compatible with my device. Should I sideload it @AppleSupport @115858",other,val
+2116264,2116264,Wed Nov 08 02:33:55 +0000 2017,623827,😂😂😂 @623828,other,train
+2117289,2117289,Wed Nov 08 04:36:34 +0000 2017,624051,do you have a 24 hr number?,support_process,test
+2119370,2119370,Wed Nov 08 06:49:43 +0000 2017,624563,.....one more thing...can @115858 please fix the weird character after writing “I️”. Thanks!,software_bug,train
+2140945,2140945,Wed Nov 08 22:35:09 +0000 2017,629575,La última actualización de software del #iphone a 11.1 me tiene el cel demasiado lento y se bloquean las aplicaciones @AppleSupport,software_bug,test
+2149181,2149181,Wed Nov 08 23:36:47 +0000 2017,631651,fix the letter that comes after H for me please @115858 (letter that comes after H) CANT TAKE THIS ANYMORE.,software_bug,train
+2179626,2179626,Sun Nov 26 05:35:42 +0000 2017,638755,Photo edit never gets past downloading - images are on iPhone X #iphonex @AppleSupport,software_bug,val
+222974,222974,Thu Oct 05 02:44:31 +0000 2017,169255,just updated to latest update now I can’t access I tunes or download podcast please help,software_bug,test
+2241140,2241140,Fri Nov 10 19:06:26 +0000 2017,653422,Just upgraded to High Sierra and now my iMessage won't work on my Macbook Air. I tried signing out and it won't sign in. Times out. iCloud is still connected. What else can I do?,account_icloud,val
+2246743,2246743,Sun Nov 26 09:20:27 +0000 2017,654775,I really don’t like my iPhone keeps losing my contact on my phone. What’s wrong with u ? @115858 #lostmycontact#givemyback,account_icloud,train
+225132,225132,Fri Nov 17 23:22:54 +0000 2017,169778,your latest update sucks. Half my texts don’t go through and my battery dies in 15 min,software_bug,val
+2276970,2276970,Sat Nov 11 16:58:16 +0000 2017,662199,I should’ve never updated my phone. My battery keeps draining now. @115858 get your ish together! 😡,software_bug,train
+2277241,2277241,Sat Nov 11 14:24:38 +0000 2017,662253,Someone explain to me how this iPhone I️ problem hasn’t been fixed yet. @115858 just doesn’t give a shit I️ guess.,software_bug,train
+2279172,2279172,Sat Nov 11 15:50:59 +0000 2017,662646,Recent IOS updates are killing my battery. Used to go all day now I only have a few hours.,software_bug,val
+2280676,2280676,Sat Nov 11 16:58:51 +0000 2017,475568,when are you going to fix this ongoing bug that has lasted far too many iOS releases? #volumetoobig #iphonevolume #iosbug #annoyance,software_bug,train
+2282652,2282652,Sat Nov 11 19:18:35 +0000 2017,663440,When is @115858 fixing this DAMN GLITCH every time I️ type “i” I️ get I️,software_bug,val
+2283285,2283285,Thu Oct 19 18:51:37 +0000 2017,441167,I’ve turned off AutoBrightness and ReduceWhitePoint countless times over several years. Why does it still auto dim?,software_bug,train
+2286762,2286762,Sat Nov 11 22:47:01 +0000 2017,664434,Hi @AppleSupport — Why would iTunes ignore this setting? Is it just trying to annoy me?,software_bug,train
+2288628,2288628,Sun Nov 12 02:47:42 +0000 2017,475490,still ain’t fixed this whole i situation,software_bug,val
+2297033,2297033,Sun Nov 12 03:57:23 +0000 2017,666857,WHY ARE ALL MY FUCKIN I’s CHINESE @115858 FIX THIS SHIT I️ I️ I️ I️ I️,software_bug,train
+2304277,2304277,Sun Nov 12 18:30:38 +0000 2017,668592,your little stupid update completely fucked with my phone. I don’t appreciate you.,general_complaint,train
+2307227,2307227,Mon Nov 13 00:41:10 +0000 2017,669316,What TF is taking @115858 so long to release an update to fix this stupid A ? bullshit,software_bug,train
+2312110,2312110,Sun Nov 12 20:55:30 +0000 2017,670525,"if I bought a belkin invisiglass screen protector with my iPhone X just about a week ago, and it’s already cracked without having dropped it, while the Apple store replace it for me for free?",repair_warranty,train
+23130,23130,Sun Nov 26 00:10:18 +0000 2017,121037,"Dear @115858, you’re really rude for ruining the battery life on our phones with that last update.",software_bug,test
+2352144,2352144,Mon Nov 13 17:04:50 +0000 2017,679748,‘double-click to install’ is awful. How about a ‘buy’ button at the bottom of the purchase sheet instead?,other,train
+2353580,2353580,Mon Nov 13 17:48:48 +0000 2017,680075,Keyboard isn’t working on my iPhone. What’s up with that @115858,software_bug,train
+2358571,2358571,Mon Nov 13 19:31:01 +0000 2017,158104,"Okay, @115858, I'm going to need y'all to give me a replacement for my phone that I *just* bought that's already not sending me notifications or telling me when someone's calling me! Thanks!",device_hardware,train
+2360306,2360306,Mon Nov 13 20:13:56 +0000 2017,462130,when y’all gone fix this shit,general_complaint,train
+236382,236382,Thu Oct 05 09:26:42 +0000 2017,172298,"IOS 11 Corrupts my phone, and then I get asked to pay for support..... Awful customer support APPLE!!! Severely disappointed!!!",software_bug,val
+2441793,2441793,Tue Nov 14 23:10:26 +0000 2017,700251,Now this crap is happening on my Mac in iMessage. Feel free to release some non-annoying software!,software_bug,train
+2449478,2449478,Wed Nov 15 02:49:41 +0000 2017,702049,Anyone else about to murder their auto correct??? @AppleSupport @115858 come ON. You’re better than this. I️,software_bug,train
+2471945,2471945,Sun Oct 29 21:33:33 +0000 2017,706931,"please, reply the direct message that i sended for you",support_process,val
+2484221,2484221,Wed Nov 15 12:11:24 +0000 2017,709693,iPhone is abnormally slow after the upgrade,software_bug,train
+2487240,2487240,Wed Nov 15 14:36:36 +0000 2017,173312,I’ve spent fifteen minutes fighting iTunes and now have a headache. I have FINLLY made my iPhone remember my playlists. That I,software_bug,train
+2490733,2490733,Wed Nov 15 17:02:54 +0000 2017,307583,Can you shower with Apple Watch Series 3,other,train
+2492357,2492357,Wed Nov 15 17:23:21 +0000 2017,711537,"“I️ don’t want happiness, I️ want euphoria”",other,train
+2493815,2493815,Wed Nov 15 18:27:11 +0000 2017,711873,Hello @AppleSupport - your new iOS has crashed my brand new iPhone & I can't get in for tech support for several days! Can you assist?,software_bug,val
+2506697,2506697,Sun Nov 26 19:11:02 +0000 2017,714725,My iPhone 7 Plus isn’t charging when on safari watching stuff online can anyone help to fix this? @AppleSupport @115858 #Iphone7,device_hardware,train
+2590391,2590391,Fri Nov 17 01:01:50 +0000 2017,733716,help i tried updating to the new high Sierra OS and I’m on an endless loop of rebooting with a kernel panic,software_bug,train
+2618283,2618283,Fri Nov 17 09:30:45 +0000 2017,739933,"Hey @AppleSupport when are you REALLY going / planing to fix the keyboard problems ? It is really, really, really slow since IOS 11 and the last update (11.1.2) doesn't resolve anything !",software_bug,train
+2635,2635,Tue Oct 31 22:42:07 +0000 2017,116339,"Just updated iOS on iPhone7, now iCloud backup greyed out, cannot be turned on, says “Last Backup Never”",account_icloud,train
+2686704,2686704,Sun Nov 19 04:54:46 +0000 2017,755519,So why don't I get the iOS 11.1.2 update😭 @115858 @AppleSupport,software_bug,train
+2693953,2693953,Sun Nov 19 17:03:34 +0000 2017,757152,"@116333 Tim, I wrote you an email Through Apple about MacBook Pro I’ve bought but not gotten. I don’t expect this to help but no one at Apple has helped either. The more I call Apple the more frustrating it becomes. #NoCustomerService",billing_purchases,test
+2703248,2703248,Sun Nov 19 21:31:48 +0000 2017,716819,does the 10.5 iPad Pro come with low battery support function like it has on the iphones?,other,train
+2773256,2773256,Tue Nov 21 08:12:56 +0000 2017,775113,sorry if i lose our streak!!!!! my phone is dumb and reset itself and locked me out of it @AppleSupport EXPLAIN,software_bug,test
+2775983,2775983,Tue Nov 21 14:23:13 +0000 2017,775670,The fact that my brightness goes up & down by itself irritating... @AppleSupport fix it,software_bug,train
+2777619,2777619,Tue Nov 21 15:09:56 +0000 2017,776017,lol @115858 has been taking money out of my account for the last 3 months without telling me why or what for and they won't refund me👍🏻,billing_purchases,train
+2789816,2789816,Fri Nov 10 15:53:33 +0000 2017,505234,"my phone is moving really slow, there’s a delay in my keyboard as well....just got this phone 🤔",software_bug,test
+2817229,2817229,Mon Nov 27 03:36:15 +0000 2017,142179,Man @115858 update #HighSierra crashed my 2011 MacBook 😩,software_bug,train
+2861079,2861079,Tue Oct 31 18:54:56 +0000 2017,794851,i forgot to extend my @45277 warranty. Could you help me out in this ? Maybe somehow get my macbook into warranty.,repair_warranty,train
+2870768,2870768,Tue Nov 28 02:14:17 +0000 2017,797138,Has anyone else had this drama? #AppleWatchSeries3 #applewatch3 @115858 @AppleSupport,other,val
+2899021,2899021,Tue Nov 28 17:20:17 +0000 2017,803145,"WhatsApp & messenger calls not working on iPhone X, used to work properly on iPhone 7; can you please help ?",software_bug,train
+291823,291823,Fri Oct 06 14:23:08 +0000 2017,185496,@115858 no clock on my lock screen and my apps want to stay in landscape mode 🙄 #ios11problems,software_bug,train
+2947067,2947067,Wed Nov 29 14:27:14 +0000 2017,813976,"why since I updated to ios 11.1.2 are all of my calls failing, no one can reach me and I can't call out. I use my phone for business. I need this fixed ASAP !",connectivity,train
+2975695,2975695,Thu Nov 30 02:38:36 +0000 2017,820671,Why does my iPad keep asking me to sign into iCloud every 30 seconds but when I put in my NEWLY changed password it tells me it is incorrect!!! WTF...I can't even use it right now!,account_icloud,test
+299081,299081,Fri Oct 06 16:31:46 +0000 2017,187289,punching myself for downloading IOS 11 cause now my battery dies quicker than my unproductive trips to the gym. thanks @115858 you suck,software_bug,train
+31860,31860,Wed Nov 01 05:03:13 +0000 2017,123035,hey this is the 2nd time I've seen a random $15 charge to my account from itunes on my card and I haven't gotten anything,billing_purchases,val
+327093,327093,Sat Oct 07 14:28:27 +0000 2017,193950,updated to iOS 11.0.2 and now my phone is super slow and laggy,software_bug,train
+327626,327626,Sat Oct 07 14:35:32 +0000 2017,194104,Is there a reason my iPhone 8+ keeps turning the WiFi back on after I turn it off?,connectivity,train
+332073,332073,Sat Oct 07 16:18:59 +0000 2017,195066,"IOS 11 has serious performance issues, I’m having a terrible experience with mi iPhone 6sPlus. Not fluid, gets stuck, lags. Fix it!",software_bug,train
+334972,334972,Sat Oct 07 18:44:10 +0000 2017,195830,"I'm unable to update my iPhone, the update downloads & when I click install it verifies but then says it's unable to download?",software_bug,train
+339969,339969,Sat Oct 07 22:24:13 +0000 2017,197188,"i don’t know what you guys did on the new update, but i’ve force restarted my phone at least 5 times this morning.",software_bug,train
+34614,34614,Wed Nov 01 09:21:21 +0000 2017,123500,Hi @AppleSupport ! #TimeMachine still not working with #HighSierra update,software_bug,test
+387589,387589,Mon Oct 09 05:54:43 +0000 2017,207738,": In ios11, Wifi & bluetooth gets enabled automaticly.Also,if u enable&thn disable flyt mode it gts active.Plz fix ios11.",connectivity,val
+410544,410544,Mon Oct 09 22:32:16 +0000 2017,212929,Look okay you’re little update has Royally fucked up my phone. And I’ve felt with it for a couple weeks hoping it would get better,general_complaint,train
+437430,437430,Tue Oct 10 16:28:03 +0000 2017,149990,any ideas on why I have recieving this message when I try to update? Thanks,software_bug,train
+481827,481827,Fri Dec 01 05:40:52 +0000 2017,229526,"yo, like come on now, first I get the dreaded “a” bug now I’m getting the I.T bug. When is this getting fixed?",software_bug,train
+511174,511174,Fri Dec 01 22:07:43 +0000 2017,136039,"I put a 32GB SD card in the card reader on my MacBook Pro, but I don't see it in the Finder. Any ideas? Thanks.",device_hardware,train
+519252,519252,Sat Dec 02 01:31:05 +0000 2017,239822,"iPhone 6S going to black screen with loading wheel, then to lock screen on a loop. Phone unusable. Need a fix ASAP",software_bug,test
+523817,523817,Sat Dec 02 03:41:21 +0000 2017,241072,Any reason why apps get unchecked in Accessibility within Security and Privacy. macOS High Sierra 10.13.1 (17B1003),software_bug,val
+545233,545233,Sat Dec 02 09:28:05 +0000 2017,149014,Hi! I changed my Apple ID password and received this message on my old iPhone 4s (iOS 9.3.5). Is this legit? Translation: Type in your MacBook Air password - The access to your account is protected with the password for „MacBook Air“. The password is encrypted (1/2),security_privacy,train
+557929,557929,Sat Dec 02 20:23:31 +0000 2017,250322,"I’ve forgotten my Apple ID password and it’s going to take 2 weeks for you to send me info. Any other password on the planet you get to create a new one straight away, this needs sorting",account_icloud,train
+569284,569284,Sun Dec 03 02:36:35 +0000 2017,253595,I’ve been waiting over 2 hours for a technician this is just no good...,support_process,train
+620187,620187,Wed Nov 22 15:34:04 +0000 2017,267195,"@115858 brand new iPhone 8+ and all of my group chat messages come to me like this.... tried a lot of different settings and restarts, still nothing. The group gets my texts, but I️ don’t receive theirs. #iPhone8Plus",software_bug,train
+627960,627960,Wed Nov 22 13:25:17 +0000 2017,268730,"Hi @AppleSupport , why can’t I airdrop photos between iPhone X to iPhone X?",connectivity,train
+641960,641960,Wed Nov 22 20:23:40 +0000 2017,272347,Hey @115858 I have HAD it with this Live Camera bs. I had finally gotten it to stay turned off before the update and now I’m back to square1.,software_bug,train
+690384,690384,Wed Oct 18 11:03:00 +0000 2017,284975,Fucking hell the worst update ever. Phones basically fucked now. Cheers @AppleSupport,general_complaint,train
+709540,709540,Tue Oct 10 19:05:01 +0000 2017,289657,Phone has completely broke so if u need me you'll have to contact via either DM or by carrier pigeon,device_hardware,train
+710661,710661,Tue Oct 10 20:38:05 +0000 2017,289937,$350 to replace my water damaged phone and now my watch refuses to pair to the new one @115858 whyyyyyyy,connectivity,train
+711139,711139,Tue Oct 10 21:05:10 +0000 2017,290067,I can't hear calls on my iPhone. WTF @AppleSupport ? It worked fine yesterday. @1647 about to get a new customer,device_hardware,train
+718093,718093,Wed Oct 11 00:18:01 +0000 2017,291952,your updates for #iPhone bite. Can't even connect to WiFi at @32366 #ditchiPhoneGoAndroid #iPhone7Horrible #sad #lotsofissues,connectivity,test
+719923,719923,Wed Oct 11 00:36:51 +0000 2017,292299,can you guys provide an iOS 11 update that doesn’t mess with our service because yea this sucks,connectivity,train
+740987,740987,Wed Oct 11 09:21:47 +0000 2017,297214,Obg @AppleSupport por estragar a bateria do meu celular novinho,device_hardware,train
+764343,764343,Sat Oct 07 04:40:03 +0000 2017,302671,ugghhh my kids phone keeps messing up! now i'm have to get her a new #iphone @AppleSupport,general_complaint,train
+810185,810185,Sun Oct 08 10:12:12 +0000 2017,313044,"Dear, Apple, any way to fix the ""iCloud storage is full"" (but it is not) bug without making a call 8 800 30 772? @AppleSupport",account_icloud,train
+861368,861368,Fri Oct 20 16:07:38 +0000 2017,324530,After the last @115858 update does anyone else’s phone battery die soo quickly ?,software_bug,train
+905934,905934,Fri Oct 20 23:40:06 +0000 2017,335076,why is my battery crap on my iPhone 6 after the new update? No I don’t want to upgrade!,software_bug,val
+908471,908471,Sat Oct 21 00:53:25 +0000 2017,335754,having some trouble since updating my iPhone to #ios1103 I can’t seem to download music on Apple Music and access playlists ?,software_bug,train
+925370,925370,Sat Oct 21 03:39:58 +0000 2017,339597,"Ever since I updated my phone, it’s been sooo slow and keeps crashing! @AppleSupport",software_bug,test
+943574,943574,Sat Oct 21 08:01:35 +0000 2017,343716,"hi i have updated my phone 6 and camera is not working proper, whatsapp is not working..",software_bug,train
+957788,957788,Wed Oct 11 06:25:51 +0000 2017,211918,MacOS'da 3-4 sürümdür cihazı kapatıp açtığımda ses dengesinin ortadan sağ hoparlöre geçtiğini görüyorum. 2 yıldır falan böyle @AppleSupport,software_bug,train
+97013,97013,Thu Nov 30 15:46:36 +0000 2017,137175,Apple really needs to do better. First with the hieroglyphics now they change it to I.T . Why would that be the correct spelling? Huh Apple? 🙄,software_bug,val

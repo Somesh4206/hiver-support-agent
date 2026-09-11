@@ -1,0 +1,667 @@
+{
+  "phase": 2,
+  "generated_at": "2026-09-11 05:31:45 UTC",
+  "random_seed": 42,
+  "taxonomy": [
+    {
+      "label": "software_bug",
+      "name": "Software / OS bug",
+      "description": "The message reports a software malfunction: an OS-update regression (slowdown, battery drain after update), a system or app bug, crash, freeze, glitch, or a feature that stopped working as expected.",
+      "eda_anchor": "Software / Apps (29.0% EDA share)",
+      "signals": [
+        "update",
+        "ios",
+        "macos",
+        "bug",
+        "glitch",
+        "crash",
+        "freeze",
+        "frozen",
+        "stuck",
+        "lag",
+        "slow",
+        "app",
+        "restart",
+        "reboot"
+      ],
+      "escalation_hint": "Usually auto-handlable with troubleshooting evidence; escalate when the user reports data loss or a bricked device.",
+      "typically_escalated": false,
+      "examples": [
+        "since new update my phone is running slow and battery drains",
+        "why when I type the letter I this box keeps popping up"
+      ]
+    },
+    {
+      "label": "device_hardware",
+      "name": "Device / hardware fault",
+      "description": "The message reports a physical-device problem: battery, screen, buttons, camera, speaker, charging, water damage, cracks, or a device that will not turn on / start.",
+      "eda_anchor": "Device / Hardware (14.2% EDA share)",
+      "signals": [
+        "screen",
+        "battery",
+        "broke",
+        "broken",
+        "button",
+        "water",
+        "camera",
+        "speaker",
+        "charger",
+        "charging",
+        "drop",
+        "dead",
+        "wont turn on",
+        "black screen",
+        "crack"
+      ],
+      "escalation_hint": "Auto-handle with troubleshooting evidence first; hardware damage usually ends in repair guidance (see repair_warranty).",
+      "typically_escalated": false,
+      "examples": [
+        "My MacBook Air won't start! Was fine last night",
+        "anyway you can run a remote test on my battery health?"
+      ]
+    },
+    {
+      "label": "account_icloud",
+      "name": "Account / Apple ID / iCloud",
+      "description": "Sign-in and account-access problems (Apple ID, password, verification codes, two-factor) and iCloud data problems (storage, backup, sync, restore, contacts/photos in the cloud).",
+      "eda_anchor": "Account / Apple ID (2.2%) + iCloud / Backup (1.7%)",
+      "signals": [
+        "apple id",
+        "password",
+        "sign in",
+        "login",
+        "verification code",
+        "2fa",
+        "icloud",
+        "backup",
+        "sync",
+        "storage full",
+        "restore"
+      ],
+      "escalation_hint": "Account recovery steps are well covered by historical evidence; escalate on suspected takeover (see security_privacy).",
+      "typically_escalated": false,
+      "examples": [
+        "why won't one of my email accounts sign in?",
+        "why doesn't it let me turn on iCloud, I click it and nothing happens"
+      ]
+    },
+    {
+      "label": "connectivity",
+      "name": "Connectivity",
+      "description": "Wireless/network problems: Wi-Fi, Bluetooth pairing, cellular signal, hotspot, AirDrop, or general connection failures.",
+      "eda_anchor": "Connectivity (2.8% EDA share)",
+      "signals": [
+        "wifi",
+        "wi-fi",
+        "bluetooth",
+        "signal",
+        "cellular",
+        "network",
+        "internet",
+        "hotspot",
+        "airdrop",
+        "connect",
+        "no sim"
+      ],
+      "escalation_hint": "Auto-handle with standard troubleshooting evidence.",
+      "typically_escalated": false,
+      "examples": [
+        "There might be a bug in iPhone X and Bluetooth, keeps disconnecting from my car",
+        "started getting a \"No Sim Card Installed\" message"
+      ]
+    },
+    {
+      "label": "billing_purchases",
+      "name": "Billing / purchases / orders",
+      "description": "Anything commercial: charges and invoices, refunds and purchase problems, subscriptions and trials, and online-store orders/delivery/shipping.",
+      "eda_anchor": "Billing (2.4%) + Refunds (1.5%) + Order/Delivery (1.0%) + Subscriptions (0.4%) \u2014 merged, see module docstring rule 2",
+      "signals": [
+        "charge",
+        "charged",
+        "bill",
+        "invoice",
+        "refund",
+        "money back",
+        "purchase",
+        "bought",
+        "subscription",
+        "trial",
+        "order",
+        "delivery",
+        "shipping",
+        "tracking"
+      ],
+      "escalation_hint": "Refunds and account-bound purchases typically need a human agent with account access \u2014 default to escalation.",
+      "typically_escalated": true,
+      "examples": [
+        "just wasted $30 on a movie I can't even watch now",
+        "when is my order going to arrive"
+      ]
+    },
+    {
+      "label": "repair_warranty",
+      "name": "Repair / warranty",
+      "description": "Repair status and logistics, replacement requests, warranty coverage questions, Genius Bar / authorized service.",
+      "eda_anchor": "Repair / Warranty (1.9% EDA share)",
+      "signals": [
+        "warranty",
+        "repair",
+        "replace",
+        "replacement",
+        "genius bar",
+        "out of warranty",
+        "service"
+      ],
+      "escalation_hint": "Needs appointment/order lookups a historical-evidence agent cannot perform \u2014 escalate unless purely informational.",
+      "typically_escalated": true,
+      "examples": [
+        "I think I either scratched or cracked my Apple Watch"
+      ]
+    },
+    {
+      "label": "security_privacy",
+      "name": "Security / privacy",
+      "description": "Phishing and scam messages impersonating Apple, hacked or compromised accounts, stolen devices, privacy concerns.",
+      "eda_anchor": "Security / Privacy (0.6% EDA share)",
+      "signals": [
+        "phishing",
+        "scam",
+        "hack",
+        "hacked",
+        "stolen",
+        "compromised",
+        "suspicious",
+        "fake email",
+        "fake text",
+        "spam",
+        "privacy"
+      ],
+      "escalation_hint": "Safety-critical \u2014 always escalate to a human; never auto-generate account-security advice.",
+      "typically_escalated": true,
+      "examples": [
+        "This is spam right, I clicked verify your account and it took me to a webpage of apple ID"
+      ]
+    },
+    {
+      "label": "general_complaint",
+      "name": "General complaint / venting",
+      "description": "Dissatisfaction with Apple or a product/update WITHOUT any specific actionable issue, malfunction or request stated. If the message names a concrete problem, classify by that problem instead (e.g. software_bug, device_hardware).",
+      "eda_anchor": "Part of the EDA unmatched pool (no keyword topic)",
+      "signals": [
+        "angry venting",
+        "sarcasm",
+        "brand criticism",
+        "switching to competitor",
+        "no concrete symptom mentioned"
+      ],
+      "escalation_hint": "Empathetic acknowledgement from evidence is fine; offer troubleshooting only if the user later states a concrete issue.",
+      "typically_escalated": false,
+      "examples": [
+        "FIX IT.",
+        "IOS 11 has killed all the perks of having an iPhone"
+      ]
+    },
+    {
+      "label": "support_process",
+      "name": "Support-process problem",
+      "description": "Meta-complaints about reaching support itself: cannot reach a human, useless automated assistant, DM/chat channel problems, support page or phone-line issues.",
+      "eda_anchor": "Part of the EDA unmatched pool (no keyword topic)",
+      "signals": [
+        "speak to a person",
+        "actual person",
+        "call me",
+        "human",
+        "automated answer",
+        "support page",
+        "no one answers"
+      ],
+      "escalation_hint": "The user is explicitly asking for a human \u2014 the clearest escalation trigger in the taxonomy.",
+      "typically_escalated": true,
+      "examples": [
+        "I'm trying to get into contact with someone from customer support, I need to speak to an actual person"
+      ]
+    },
+    {
+      "label": "other",
+      "name": "Other / out of scope",
+      "description": "Everything that fits no other class: pre-sales product questions (discounts, availability), ambiguous one-word messages, non-English messages that cannot be confidently classified, and off-topic content.",
+      "eda_anchor": "Part of the EDA unmatched pool (no keyword topic)",
+      "signals": [
+        "pre-sales question",
+        "discount",
+        "availability",
+        "ambiguous",
+        "off-topic"
+      ],
+      "escalation_hint": "Heterogeneous by construction \u2014 default to escalation.",
+      "typically_escalated": true,
+      "examples": [
+        "A",
+        "r",
+        "e",
+        " ",
+        "t",
+        "h",
+        "e",
+        "r",
+        "e",
+        " ",
+        "a",
+        "n",
+        "y",
+        " ",
+        "s",
+        "t",
+        "u",
+        "d",
+        "e",
+        "n",
+        "t",
+        " ",
+        "d",
+        "i",
+        "s",
+        "c",
+        "o",
+        "u",
+        "n",
+        "t",
+        "s",
+        " ",
+        "o",
+        "n",
+        " ",
+        "l",
+        "a",
+        "p",
+        "t",
+        "o",
+        "p",
+        "s",
+        " ",
+        "i",
+        "n",
+        " ",
+        "s",
+        "t",
+        "o",
+        "r",
+        "e",
+        "?"
+      ]
+    }
+  ],
+  "golden_set": {
+    "total": 200,
+    "sampling_frame": "customer-initiated conversation openers (inbound roots)",
+    "sampling_frame_size": 80244,
+    "sampling": "uniform random sample, no rare-class boosting",
+    "labeling": {
+      "method": "manual",
+      "labeler": "project author \u2014 every message read and labelled by meaning; the worksheet shows no keyword hints to avoid biasing labels",
+      "worksheet": "evaluation/labeling_worksheet.jsonl",
+      "labels_file": "evaluation/golden_labels.json",
+      "validation": "automated gate: every worksheet row labelled exactly once, labels restricted to taxonomy classes, no unknown ids (build exits non-zero on failure)"
+    },
+    "class_counts": {
+      "software_bug": 128,
+      "other": 15,
+      "device_hardware": 11,
+      "connectivity": 9,
+      "account_icloud": 9,
+      "general_complaint": 9,
+      "repair_warranty": 6,
+      "support_process": 6,
+      "billing_purchases": 5,
+      "security_privacy": 2
+    },
+    "split_sizes": {
+      "train": 142,
+      "val": 29,
+      "test": 29
+    },
+    "split_strategy": "conversation-level, stratified by label, seed 42 (ratios 70/15/15, per-class rounding to train)",
+    "per_class_splits": {
+      "software_bug": {
+        "total": 128,
+        "train": 90,
+        "val": 19,
+        "test": 19
+      },
+      "device_hardware": {
+        "total": 11,
+        "train": 7,
+        "val": 2,
+        "test": 2
+      },
+      "account_icloud": {
+        "total": 9,
+        "train": 7,
+        "val": 1,
+        "test": 1
+      },
+      "connectivity": {
+        "total": 9,
+        "train": 7,
+        "val": 1,
+        "test": 1
+      },
+      "billing_purchases": {
+        "total": 5,
+        "train": 3,
+        "val": 1,
+        "test": 1
+      },
+      "repair_warranty": {
+        "total": 6,
+        "train": 4,
+        "val": 1,
+        "test": 1
+      },
+      "security_privacy": {
+        "total": 2,
+        "train": 2,
+        "val": 0,
+        "test": 0
+      },
+      "general_complaint": {
+        "total": 9,
+        "train": 7,
+        "val": 1,
+        "test": 1
+      },
+      "support_process": {
+        "total": 6,
+        "train": 4,
+        "val": 1,
+        "test": 1
+      },
+      "other": {
+        "total": 15,
+        "train": 11,
+        "val": 2,
+        "test": 2
+      }
+    },
+    "date_range": {
+      "start": "2017-09-25",
+      "end": "2017-12-03"
+    },
+    "period_note": "99.5% of the 80,244 openers fall in Sep\u2013Dec 2017 (the iOS 11 rollout window of the corpus), so the golden set \u2014 like the corpus itself \u2014 is dominated by iOS 11 era complaints. Metrics measure this historical window, not a balanced mix.",
+    "isolation_manifest": "evaluation/golden_conversation_ids.json"
+  },
+  "baselines": {
+    "keyword_rules": {
+      "description": "Phase 1 EDA provisional keyword topics mapped onto taxonomy labels; word-boundary matching, first match in EDA topic order wins, no match -> other.",
+      "test": {
+        "accuracy": 0.4828,
+        "macro_f1": 0.3906,
+        "weighted_f1": 0.5298
+      }
+    },
+    "majority": {
+      "description": "Always predict the train majority class (software_bug).",
+      "test": {
+        "accuracy": 0.6552,
+        "macro_f1": 0.0792,
+        "weighted_f1": 0.5187
+      }
+    },
+    "tfidf_logreg": {
+      "description": "TfidfVectorizer(word 1-2 grams, English stopwords, sublinear tf) + LogisticRegression(max_iter=2000), fit on the train split; hyperparameters selected by 5-fold CV on the train split (criterion: mean of accuracy and macro-F1).",
+      "selected_hyperparameters": {
+        "C": 10.0,
+        "class_weight": "balanced",
+        "min_df": 1
+      },
+      "selection_criterion": "5-fold CV on train: mean(accuracy, macro-F1); ties -> macro-F1. Validation is too small (n=29) for stable tuning and is kept as a held-out sanity check; test untouched until final evaluation.",
+      "cv_on_train": {
+        "folds": 5,
+        "folds_attempted": 5,
+        "fold_count_reduced": false,
+        "macro_f1_mean": 0.1597,
+        "macro_f1_std": 0.0812,
+        "fold_scores": [
+          0.1079,
+          0.084,
+          0.1773,
+          0.1191,
+          0.3101
+        ]
+      },
+      "val": {
+        "accuracy": 0.6552,
+        "macro_f1": 0.0809,
+        "weighted_f1": 0.5297
+      },
+      "test": {
+        "accuracy": 0.6207,
+        "macro_f1": 0.0783,
+        "weighted_f1": 0.5127
+      },
+      "per_class_test": [
+        {
+          "label": "software_bug",
+          "precision": 0.6667,
+          "recall": 0.9474,
+          "f1": 0.7826,
+          "support": 19
+        },
+        {
+          "label": "device_hardware",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        {
+          "label": "account_icloud",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "connectivity",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "billing_purchases",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "repair_warranty",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "security_privacy",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        {
+          "label": "general_complaint",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "support_process",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "other",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      ],
+      "confusion_matrix_test": {
+        "labels": [
+          "software_bug",
+          "device_hardware",
+          "account_icloud",
+          "connectivity",
+          "billing_purchases",
+          "repair_warranty",
+          "security_privacy",
+          "general_complaint",
+          "support_process",
+          "other"
+        ],
+        "matrix": [
+          [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "deltas_test": {
+      "logreg_vs_majority_accuracy": -0.0345,
+      "logreg_vs_majority_macro_f1": -0.0009,
+      "logreg_vs_keywords_accuracy": 0.1379,
+      "logreg_vs_keywords_macro_f1": -0.3123
+    }
+  },
+  "artifacts": [
+    "evaluation/golden_set.csv",
+    "evaluation/golden_labels.json",
+    "evaluation/labeling_worksheet.jsonl",
+    "evaluation/split_assignments.csv",
+    "evaluation/golden_conversation_ids.json",
+    "evaluation/results/baseline_results.json",
+    "evaluation/results/phase2_summary.json"
+  ]
+}

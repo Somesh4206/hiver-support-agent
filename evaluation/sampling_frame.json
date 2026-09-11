@@ -1,0 +1,6 @@
+{
+  "sampling_frame": "customer-initiated conversation openers (inbound turn-1 roots)",
+  "sampling_frame_size": 80244,
+  "sample_size": 200,
+  "random_seed": 42
+}
