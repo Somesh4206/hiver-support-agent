@@ -1,6 +1,6 @@
 # Apple Support AI — Python dependencies
-# Phases 1–2 scope: data pipeline + EDA + baseline classifiers. Dependencies
-# for later phases (sentence-transformers, faiss-cpu, streamlit, ...) will be
+# Phases 1–3 scope: data pipeline + EDA + baseline classifiers + embedding
+# classifier. Dependencies for later phases (faiss-cpu, streamlit, ...) will be
 # added in the phase that actually uses them — this file only lists packages
 # that are used *now* (assignment rule: "Add only packages that are actually
 # used").
@@ -11,3 +11,4 @@ matplotlib>=3.8
 seaborn>=0.13
 python-dotenv>=1.0
 scikit-learn>=1.5
+sentence-transformers>=3.0        # Phase 3: all-MiniLM-L6-v2 encoder (installs torch)

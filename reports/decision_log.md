@@ -266,12 +266,58 @@ inspectable rather than asserted.
 
 ---
 
-## Planned decisions (Phases 3+)
+## D17. Frozen encoder + learned head, evaluated under the Phase 2 protocol *(Phase 3)*
 
-The following are recorded as *intent*, not yet implemented: all-MiniLM-L6-v2
-embeddings with a simple classifier head, trained on the golden train split
-with rare-class over-sampling considered (Phase 3); FAISS for local vector
-retrieval over the 106,137 pairs with golden conversations excluded (Phase
-4); rule-based, explainable escalation with confidence/retrieval thresholds
-from configuration (Phase 6); false-auto rate as the primary safety metric
-(Phase 6).
+**Decision:** The Phase 3 classifier is `all-MiniLM-L6-v2` (from
+configuration, `EMBEDDING_MODEL` — never hard-coded) kept **frozen**, with
+two heads fit on the 142-example train split only: a multinomial
+LogisticRegression head (hyperparameters C × class_weight selected by
+5-fold CV on train, criterion mean(accuracy, macro-F1) — *identical* to
+D16) and a zero-hyperparameter nearest-centroid head with cosine
+confidence. Val remains a sanity check; test untouched until final
+evaluation; embeddings cached on disk keyed by (model id, texts hash) for
+determinism.
+
+**Why:** With n_train=142, fine-tuning a 22.3M-parameter encoder would
+memorise the split and leak evaluation signal through the representation;
+the frozen-encoder + linear-head recipe is the honest transfer-learning
+baseline at this scale. Reusing the D16 protocol exactly is what makes the
+Phase 2→3 comparison meaningful: the only changed variable is the feature
+representation (lexical TF-IDF → semantic embeddings). The prototype head
+is included because it needs no tuning at all, naturally tolerates
+2-example classes, and exposes a confidence surface — the measured result
+(macro-F1 0.389, best of all learned models) validates that simplicity.
+
+---
+
+## D18. Report the class-collapse fix, not a fake accuracy win *(Phase 3)*
+
+**Decision:** The Phase 3 headline is stated as measured: embeddings lift
+test macro-F1 0.078 → 0.303 (LogReg head, ≈3.9×) at accuracy 0.6552 —
+*tying* majority, not beating it — and weighted-F1 0.6586 (best of all
+five models). The centroid head wins learned macro-F1 (0.3894) at lower
+accuracy (0.5517). Rare-class over-sampling is reported as a measured
+comparison (balanced class weights: CV macro-F1 0.3495 → 0.4288, selected
+by the criterion), and the confidence preview at threshold 0.60 carries an
+explicit n=29 indicative-only caveat.
+
+**Why:** At n=29 test examples, +0.03 accuracy is one tweet; presenting it
+as a breakthrough would be dishonest. The real, inspectable change is
+structural: the head predicts 7 distinct classes vs 2 for TF-IDF (25/29
+`software_bug`), and per-class F1s move from 0.0 to non-zero across rare
+classes. Documenting the sarcasm error made *with 0.889 confidence* also
+pre-weights Phase 6 against confidence-only escalation — recorded now so
+the later policy design cannot quietly ignore it.
+
+---
+
+## Planned decisions (Phases 4+)
+
+The following are recorded as *intent*, not yet implemented: FAISS for
+local vector retrieval over the 106,137 pairs with golden conversations
+excluded via the isolation manifest, Recall@1/3/5 evaluation (Phase 4);
+LLM generation grounded in retrieved pairs with assignment §16 safety
+rules (Phase 5); rule-based, explainable escalation consuming the Phase 3
+confidence surface plus retrieval scores and security signals
+(INTENT_CONFIDENCE_THRESHOLD / RETRIEVAL_THRESHOLD from configuration),
+false-auto rate as the primary safety metric (Phase 6).

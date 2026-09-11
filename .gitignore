@@ -29,6 +29,9 @@ evaluation/results/*
 # measured Phase 2 metrics are small, stable documents — version them
 !evaluation/results/baseline_results.json
 !evaluation/results/phase2_summary.json
+# measured Phase 3 metrics — same rationale (small, stable, versioned)
+!evaluation/results/embedding_results.json
+!evaluation/results/phase3_summary.json
 
 # --- notebooks ---
 .ipynb_checkpoints/

@@ -7,9 +7,9 @@ retrieves historically similar support cases, generates responses **grounded
 in that historical evidence**, and decides safely between auto-handling and
 escalation — with quantitative evaluation of every component.
 
-> **Current status: Phases 1–2 complete — data foundation + intent
-> classification foundation (taxonomy, golden set, baselines).** The
-> assignment mandates a phased build; Phases 3–9 are scoped but deliberately
+> **Current status: Phases 1–3 complete — data foundation + intent
+> classification foundation + embedding classifier (measured).** The
+> assignment mandates a phased build; Phases 4–9 are scoped but deliberately
 > **not implemented** until each prior phase is working and tested.
 
 ---
@@ -54,7 +54,7 @@ notebooks/01_data_exploration.ipynb (executed, cross-checked)
 web dashboard (Next.js page + /api/phase1/status — this repo's root app)
 ```
 
-Phases 3–9 (not yet built): embedding classifier → FAISS retrieval
+Phases 4–9 (not yet built): FAISS retrieval
 (Recall@K) → grounded generation → escalation policy (false-auto rate) →
 unified agent → Streamlit app → final report.
 
@@ -91,14 +91,19 @@ python scripts/run_eda.py
 python scripts/build_golden_set.py sample --n 200
 python scripts/build_golden_set.py build      # validate labels, split, manifest
 python scripts/train_baselines.py            # metrics -> evaluation/results/
+
+# 6) Phase 3: embedding classifier (installs sentence-transformers/torch)
+python scripts/train_embedding_classifier.py  # metrics + reusable model heads
 ```
 
 Environment variables (`.env`) — full list in `.env.example`:
 `APPLE_SUPPORT_AUTHOR_ID` (required), `RAW_DATA_PATH`, `PROCESSED_DIR`,
-`RANDOM_SEED`, `CHUNK_SIZE`, `CLOSURE_MAX_PASSES`; Phase 2+ thresholds
-(`INTENT_CONFIDENCE_THRESHOLD=0.60`, `RETRIEVAL_THRESHOLD=0.65`, `TOP_K=5`,
-`EMBEDDING_MODEL`, `LLM_MODEL`, `LLM_API_KEY`) are parsed but not consumed
-until the phase that needs them. **Never commit `.env`.**
+`RANDOM_SEED`, `CHUNK_SIZE`, `CLOSURE_MAX_PASSES`; `EMBEDDING_MODEL`
+(consumed since Phase 3, default `sentence-transformers/all-MiniLM-L6-v2`);
+Phase 4+ thresholds (`INTENT_CONFIDENCE_THRESHOLD=0.60` — already measured
+as a preview in Phase 3, `RETRIEVAL_THRESHOLD=0.65`, `TOP_K=5`, `LLM_MODEL`,
+`LLM_API_KEY`) are parsed but not consumed until the phase that needs them.
+**Never commit `.env`.**
 
 ## Example output (real run)
 
@@ -124,7 +129,7 @@ A reconstructed pair (from `conversation_pairs.csv`):
 |---|---|---|
 | 14838 | "iOS 11 is draining the battery on my iPhone 7 twice as fast as iOS 10. Help!" | "We'd like to gather some more information for better troubleshooting. Can you DM us the country you are locate…" |
 
-## Metrics (Phases 1–2 — actually measured)
+## Metrics (Phases 1–3 — actually measured)
 
 | metric | value |
 |---|---|
@@ -139,11 +144,14 @@ A reconstructed pair (from `conversation_pairs.csv`):
 | keyword-rules baseline (test) | accuracy 0.483 · macro-F1 **0.391** |
 | majority baseline (test) | accuracy **0.655** · macro-F1 0.079 |
 | TF-IDF + LogReg baseline (test) | accuracy 0.621 · macro-F1 0.078 |
+| **MiniLM + LogReg head (Phase 3, test)** | accuracy 0.655 · macro-F1 **0.303** · weighted-F1 **0.659** |
+| **MiniLM + centroids (Phase 3, test)** | accuracy 0.552 · macro-F1 **0.389** (zero hyperparams) |
+| confidence (Phase 3, test) | 0.780 mean on correct vs 0.508 on wrong |
 | structural validations | 7/7 PASS |
 
 Recall@K / escalation metrics **do not exist yet** — they are Phase 4–6
-deliverables and will be reported only once measured. Full Phase 2 detail:
-`evaluation/results/baseline_results.json` and `reports/report.md` §6.
+deliverables and will be reported only once measured. Full Phase 3 detail:
+`evaluation/results/embedding_results.json` and `reports/report.md` §7.
 
 ## Repository layout
 
@@ -151,14 +159,15 @@ deliverables and will be reported only once measured. Full Phase 2 detail:
 hiver-support-agent/
 ├── data/                  # raw (gitignored) + processed outputs
 ├── notebooks/             # 01_data_exploration.ipynb (executed)
-├── scripts/               # find_author_ids · prepare_data · run_eda · build_golden_set · train_baselines · make_synthetic_sample
+├── scripts/               # find_author_ids · prepare_data · run_eda · build_golden_set · train_baselines · train_embedding_classifier · make_synthetic_sample
 ├── src/
 │   ├── config.py          # env-driven settings, no magic constants
 │   ├── data/              # load · preprocessing · conversations
-│   └── intents/           # taxonomy · baselines (Phase 2)
-├── evaluation/            # Phase 2: golden set, labels, splits, results
+│   └── intents/           # taxonomy · baselines (Phase 2) · embeddings · embedding_classifier (Phase 3)
+├── evaluation/            # Phase 2–3: golden set, labels, splits, results
+├── models/                # Phase 3: trained heads + embedding cache (gitignored)
 ├── reports/               # report.md · decision_log.md
-├── requirements.txt       # only packages actually used (Phases 1–2)
+├── requirements.txt       # only packages actually used (Phases 1–3)
 ├── .env.example           # configuration template
 └── .gitignore             # keeps the 516 MB corpus out of git
 ```

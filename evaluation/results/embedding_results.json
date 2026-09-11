@@ -1,0 +1,2236 @@
+{
+  "generated_at": "2026-09-11 08:15:10 UTC",
+  "random_seed": 42,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dim": 384,
+  "protocol": "Frozen public encoder (no fine-tuning); both heads fit on the TRAIN split only; logreg_head hyperparameters selected by 5-fold stratified CV on train with criterion mean(accuracy, macro-F1) (identical to Phase 2 so the comparison isolates the feature representation); VAL is a held-out sanity check; TEST untouched until final evaluation.",
+  "logreg_head": {
+    "description": "LogisticRegression (multinomial, max_iter=5000) over frozen sentence-transformers/all-MiniLM-L6-v2 384-d embeddings; fit on the train split; hyperparameters selected by 5-fold CV on the train split (criterion: mean of accuracy and macro-F1 \u2014 identical protocol to the Phase 2 tfidf_logreg baseline).",
+    "selected_hyperparameters": {
+      "C": 100.0,
+      "class_weight": "balanced"
+    },
+    "selection_criterion": "5-fold CV on train: mean(accuracy, macro-F1); ties -> macro-F1. Same criterion as Phase 2; VAL (n=29) kept as held-out sanity check; TEST untouched until final evaluation.",
+    "selection_grid": [
+      {
+        "C": 0.1,
+        "class_weight": null,
+        "cv_train_accuracy": 0.6338,
+        "cv_train_macro_f1": 0.0776,
+        "cv_train_mean_score": 0.3557
+      },
+      {
+        "C": 0.1,
+        "class_weight": "balanced",
+        "cv_train_accuracy": 0.4155,
+        "cv_train_macro_f1": 0.3666,
+        "cv_train_mean_score": 0.3911
+      },
+      {
+        "C": 1.0,
+        "class_weight": null,
+        "cv_train_accuracy": 0.6338,
+        "cv_train_macro_f1": 0.0776,
+        "cv_train_mean_score": 0.3557
+      },
+      {
+        "C": 1.0,
+        "class_weight": "balanced",
+        "cv_train_accuracy": 0.6338,
+        "cv_train_macro_f1": 0.4202,
+        "cv_train_mean_score": 0.527
+      },
+      {
+        "C": 10.0,
+        "class_weight": null,
+        "cv_train_accuracy": 0.6831,
+        "cv_train_macro_f1": 0.2642,
+        "cv_train_mean_score": 0.4737
+      },
+      {
+        "C": 10.0,
+        "class_weight": "balanced",
+        "cv_train_accuracy": 0.7042,
+        "cv_train_macro_f1": 0.4114,
+        "cv_train_mean_score": 0.5578
+      },
+      {
+        "C": 100.0,
+        "class_weight": null,
+        "cv_train_accuracy": 0.7113,
+        "cv_train_macro_f1": 0.3495,
+        "cv_train_mean_score": 0.5304
+      },
+      {
+        "C": 100.0,
+        "class_weight": "balanced",
+        "cv_train_accuracy": 0.7113,
+        "cv_train_macro_f1": 0.4288,
+        "cv_train_mean_score": 0.5701
+      }
+    ],
+    "train": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "classes_evaluated": [
+        "software_bug",
+        "device_hardware",
+        "account_icloud",
+        "connectivity",
+        "billing_purchases",
+        "repair_warranty",
+        "security_privacy",
+        "general_complaint",
+        "support_process",
+        "other"
+      ],
+      "per_class": [
+        {
+          "label": "software_bug",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 90
+        },
+        {
+          "label": "device_hardware",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 7
+        },
+        {
+          "label": "account_icloud",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 7
+        },
+        {
+          "label": "connectivity",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 7
+        },
+        {
+          "label": "billing_purchases",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 3
+        },
+        {
+          "label": "repair_warranty",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 4
+        },
+        {
+          "label": "security_privacy",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        {
+          "label": "general_complaint",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 7
+        },
+        {
+          "label": "support_process",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 4
+        },
+        {
+          "label": "other",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 11
+        }
+      ],
+      "confusion_matrix": {
+        "labels": [
+          "software_bug",
+          "device_hardware",
+          "account_icloud",
+          "connectivity",
+          "billing_purchases",
+          "repair_warranty",
+          "security_privacy",
+          "general_complaint",
+          "support_process",
+          "other"
+        ],
+        "matrix": [
+          [
+            90,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            7,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            11
+          ]
+        ]
+      }
+    },
+    "val": {
+      "accuracy": 0.5862,
+      "macro_f1": 0.2804,
+      "weighted_f1": 0.554,
+      "classes_evaluated": [
+        "software_bug",
+        "device_hardware",
+        "account_icloud",
+        "connectivity",
+        "billing_purchases",
+        "repair_warranty",
+        "general_complaint",
+        "support_process",
+        "other"
+      ],
+      "per_class": [
+        {
+          "label": "software_bug",
+          "precision": 0.7368,
+          "recall": 0.7368,
+          "f1": 0.7368,
+          "support": 19
+        },
+        {
+          "label": "device_hardware",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        {
+          "label": "account_icloud",
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667,
+          "support": 1
+        },
+        {
+          "label": "connectivity",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "billing_purchases",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "repair_warranty",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        {
+          "label": "security_privacy",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        {
+          "label": "general_complaint",
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "support": 1
+        },
+        {
+          "label": "support_process",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "other",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      ],
+      "confusion_matrix": {
+        "labels": [
+          "software_bug",
+          "device_hardware",
+          "account_icloud",
+          "connectivity",
+          "billing_purchases",
+          "repair_warranty",
+          "security_privacy",
+          "general_complaint",
+          "support_process",
+          "other"
+        ],
+        "matrix": [
+          [
+            14,
+            0,
+            1,
+            2,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "test": {
+      "accuracy": 0.6552,
+      "macro_f1": 0.3032,
+      "weighted_f1": 0.6586,
+      "classes_evaluated": [
+        "software_bug",
+        "device_hardware",
+        "account_icloud",
+        "connectivity",
+        "billing_purchases",
+        "repair_warranty",
+        "general_complaint",
+        "support_process",
+        "other"
+      ],
+      "per_class": [
+        {
+          "label": "software_bug",
+          "precision": 0.8889,
+          "recall": 0.8421,
+          "f1": 0.8649,
+          "support": 19
+        },
+        {
+          "label": "device_hardware",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        {
+          "label": "account_icloud",
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667,
+          "support": 1
+        },
+        {
+          "label": "connectivity",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "billing_purchases",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "repair_warranty",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "security_privacy",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        {
+          "label": "general_complaint",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "support_process",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        {
+          "label": "other",
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        }
+      ],
+      "confusion_matrix": {
+        "labels": [
+          "software_bug",
+          "device_hardware",
+          "account_icloud",
+          "connectivity",
+          "billing_purchases",
+          "repair_warranty",
+          "security_privacy",
+          "general_complaint",
+          "support_process",
+          "other"
+        ],
+        "matrix": [
+          [
+            16,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      }
+    }
+  },
+  "prototype": {
+    "description": "Nearest-class-centroid classifier: L2-normalised mean embedding per class (fit on the train split), cosine similarity at inference, softmax over similarities as confidence. Zero hyperparameters; naturally handles classes with 2 examples; the confidence surface Phase 6 can threshold.",
+    "train": {
+      "accuracy": 0.8732,
+      "macro_f1": 0.8855,
+      "weighted_f1": 0.882,
+      "classes_evaluated": [
+        "software_bug",
+        "device_hardware",
+        "account_icloud",
+        "connectivity",
+        "billing_purchases",
+        "repair_warranty",
+        "security_privacy",
+        "general_complaint",
+        "support_process",
+        "other"
+      ],
+      "per_class": [
+        {
+          "label": "software_bug",
+          "precision": 0.9867,
+          "recall": 0.8222,
+          "f1": 0.897,
+          "support": 90
+        },
+        {
+          "label": "device_hardware",
+          "precision": 0.875,
+          "recall": 1.0,
+          "f1": 0.9333,
+          "support": 7
+        },
+        {
+          "label": "account_icloud",
+          "precision": 0.875,
+          "recall": 1.0,
+          "f1": 0.9333,
+          "support": 7
+        },
+        {
+          "label": "connectivity",
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667,
+          "support": 7
+        },
+        {
+          "label": "billing_purchases",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 3
+        },
+        {
+          "label": "repair_warranty",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 4
+        },
+        {
+          "label": "security_privacy",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        {
+          "label": "general_complaint",
+          "precision": 0.5455,
+          "recall": 0.8571,
+          "f1": 0.6667,
+          "support": 7
+        },
+        {
+          "label": "support_process",
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1": 0.8889,
+          "support": 4
+        },
+        {
+          "label": "other",
+          "precision": 0.8333,
+          "recall": 0.9091,
+          "f1": 0.8696,
+          "support": 11
+        }
+      ],
+      "confusion_matrix": {
+        "labels": [
+          "software_bug",
+          "device_hardware",
+          "account_icloud",
+          "connectivity",
+          "billing_purchases",
+          "repair_warranty",
+          "security_privacy",
+          "general_complaint",
+          "support_process",
+          "other"
+        ],
+        "matrix": [
+          [
+            74,
+            1,
+            1,
+            7,
+            0,
+            0,
+            0,
+            4,
+            1,
+            2
+          ],
+          [
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            6,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            10
+          ]
+        ]
+      }
+    },
+    "val": {
+      "accuracy": 0.6552,
+      "macro_f1": 0.3967,
+      "weighted_f1": 0.6563,
+      "classes_evaluated": [
+        "software_bug",
+        "device_hardware",
+        "account_icloud",
+        "connectivity",
+        "billing_purchases",
+        "repair_warranty",
+        "general_complaint",
+        "support_process",
+        "other"
+      ],
+      "per_class": [
+        {
+          "label": "software_bug",
+          "precision": 0.875,
+          "recall": 0.7368,
+          "f1": 0.8,
+          "support": 19
+        },
+        {
+          "label": "device_hardware",
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "support": 2
+        },
+        {
+          "label": "account_icloud",
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667,
+          "support": 1
+        },
+        {
+          "label": "connectivity",
+          "precision": 0.3333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "support": 1
+        },
+        {
+          "label": "billing_purchases",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "repair_warranty",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        {
+          "label": "security_privacy",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        {
+          "label": "general_complaint",
+          "precision": 0.2,
+          "recall": 1.0,
+          "f1": 0.3333,
+          "support": 1
+        },
+        {
+          "label": "support_process",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "other",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      ],
+      "confusion_matrix": {
+        "labels": [
+          "software_bug",
+          "device_hardware",
+          "account_icloud",
+          "connectivity",
+          "billing_purchases",
+          "repair_warranty",
+          "security_privacy",
+          "general_complaint",
+          "support_process",
+          "other"
+        ],
+        "matrix": [
+          [
+            14,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "test": {
+      "accuracy": 0.5517,
+      "macro_f1": 0.3894,
+      "weighted_f1": 0.6029,
+      "classes_evaluated": [
+        "software_bug",
+        "device_hardware",
+        "account_icloud",
+        "connectivity",
+        "billing_purchases",
+        "repair_warranty",
+        "general_complaint",
+        "support_process",
+        "other"
+      ],
+      "per_class": [
+        {
+          "label": "software_bug",
+          "precision": 0.8571,
+          "recall": 0.6316,
+          "f1": 0.7273,
+          "support": 19
+        },
+        {
+          "label": "device_hardware",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        {
+          "label": "account_icloud",
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667,
+          "support": 1
+        },
+        {
+          "label": "connectivity",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "billing_purchases",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "repair_warranty",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        {
+          "label": "security_privacy",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        {
+          "label": "general_complaint",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "support_process",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        {
+          "label": "other",
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        }
+      ],
+      "confusion_matrix": {
+        "labels": [
+          "software_bug",
+          "device_hardware",
+          "account_icloud",
+          "connectivity",
+          "billing_purchases",
+          "repair_warranty",
+          "security_privacy",
+          "general_complaint",
+          "support_process",
+          "other"
+        ],
+        "matrix": [
+          [
+            12,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            2,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      }
+    }
+  },
+  "comparison_test": {
+    "keyword_rules": {
+      "accuracy": 0.4828,
+      "macro_f1": 0.3906,
+      "weighted_f1": 0.5298,
+      "classes_evaluated": [
+        "software_bug",
+        "device_hardware",
+        "account_icloud",
+        "connectivity",
+        "billing_purchases",
+        "repair_warranty",
+        "general_complaint",
+        "support_process",
+        "other"
+      ],
+      "per_class": [
+        {
+          "label": "software_bug",
+          "precision": 0.9,
+          "recall": 0.4737,
+          "f1": 0.6207,
+          "support": 19
+        },
+        {
+          "label": "device_hardware",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        {
+          "label": "account_icloud",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        {
+          "label": "connectivity",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        {
+          "label": "billing_purchases",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        {
+          "label": "repair_warranty",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "security_privacy",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        {
+          "label": "general_complaint",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "support_process",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "other",
+          "precision": 0.1667,
+          "recall": 1.0,
+          "f1": 0.2857,
+          "support": 2
+        }
+      ],
+      "confusion_matrix": {
+        "labels": [
+          "software_bug",
+          "device_hardware",
+          "account_icloud",
+          "connectivity",
+          "billing_purchases",
+          "repair_warranty",
+          "security_privacy",
+          "general_complaint",
+          "support_process",
+          "other"
+        ],
+        "matrix": [
+          [
+            9,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            7
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2
+          ]
+        ]
+      }
+    },
+    "majority": {
+      "accuracy": 0.6552,
+      "macro_f1": 0.0792,
+      "weighted_f1": 0.5187,
+      "classes_evaluated": [
+        "software_bug",
+        "device_hardware",
+        "account_icloud",
+        "connectivity",
+        "billing_purchases",
+        "repair_warranty",
+        "general_complaint",
+        "support_process",
+        "other"
+      ],
+      "per_class": [
+        {
+          "label": "software_bug",
+          "precision": 0.6552,
+          "recall": 1.0,
+          "f1": 0.7917,
+          "support": 19
+        },
+        {
+          "label": "device_hardware",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        {
+          "label": "account_icloud",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "connectivity",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "billing_purchases",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "repair_warranty",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "security_privacy",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        {
+          "label": "general_complaint",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "support_process",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "other",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      ],
+      "confusion_matrix": {
+        "labels": [
+          "software_bug",
+          "device_hardware",
+          "account_icloud",
+          "connectivity",
+          "billing_purchases",
+          "repair_warranty",
+          "security_privacy",
+          "general_complaint",
+          "support_process",
+          "other"
+        ],
+        "matrix": [
+          [
+            19,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "tfidf_logreg": {
+      "accuracy": 0.6207,
+      "macro_f1": 0.0783,
+      "weighted_f1": 0.5127,
+      "classes_evaluated": [
+        "software_bug",
+        "device_hardware",
+        "account_icloud",
+        "connectivity",
+        "billing_purchases",
+        "repair_warranty",
+        "general_complaint",
+        "support_process",
+        "other"
+      ],
+      "per_class": [
+        {
+          "label": "software_bug",
+          "precision": 0.6667,
+          "recall": 0.9474,
+          "f1": 0.7826,
+          "support": 19
+        },
+        {
+          "label": "device_hardware",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        {
+          "label": "account_icloud",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "connectivity",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "billing_purchases",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "repair_warranty",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "security_privacy",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        {
+          "label": "general_complaint",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "support_process",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        {
+          "label": "other",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      ],
+      "confusion_matrix": {
+        "labels": [
+          "software_bug",
+          "device_hardware",
+          "account_icloud",
+          "connectivity",
+          "billing_purchases",
+          "repair_warranty",
+          "security_privacy",
+          "general_complaint",
+          "support_process",
+          "other"
+        ],
+        "matrix": [
+          [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "logreg_head": {
+      "accuracy": 0.6552,
+      "macro_f1": 0.3032,
+      "weighted_f1": 0.6586
+    },
+    "prototype": {
+      "accuracy": 0.5517,
+      "macro_f1": 0.3894,
+      "weighted_f1": 0.6029
+    }
+  },
+  "deltas_test": {
+    "logreg_head_vs_tfidf_logreg": {
+      "accuracy": 0.0345,
+      "macro_f1": 0.2249
+    },
+    "logreg_head_vs_majority": {
+      "accuracy": 0.0,
+      "macro_f1": 0.224
+    },
+    "logreg_head_vs_keywords": {
+      "accuracy": 0.1724,
+      "macro_f1": -0.0874
+    },
+    "prototype_vs_majority": {
+      "accuracy": -0.1035,
+      "macro_f1": 0.3102
+    }
+  },
+  "confidence_preview_test": {
+    "threshold": 0.6,
+    "note": "Measured on the 29-example test split with the selected logreg_head \u2014 a preview of the Phase 6 escalation input, not a tuned policy. Numbers at n=29 are indicative only.",
+    "mean_confidence_correct": 0.7801,
+    "mean_confidence_wrong": 0.5079,
+    "share_above_threshold": 0.6552,
+    "accuracy_above_threshold": 0.8421
+  },
+  "error_analysis_test": {
+    "n_test": 29,
+    "n_errors": 10,
+    "errors": [
+      {
+        "conversation_id": "1020302",
+        "text": "my App Store is not working!!!!",
+        "true_label": "software_bug",
+        "predicted_label": "device_hardware",
+        "confidence": 0.367,
+        "runner_up": "software_bug",
+        "runner_up_confidence": 0.1961
+      },
+      {
+        "conversation_id": "1544927",
+        "text": "do you have a price quote on getting a screen fixed for iPhone 7 Plus?",
+        "true_label": "repair_warranty",
+        "predicted_label": "other",
+        "confidence": 0.3705,
+        "runner_up": "repair_warranty",
+        "runner_up_confidence": 0.2413
+      },
+      {
+        "conversation_id": "1762856",
+        "text": "I love when my fucking 10 month old iPhone 7+ breaks for no God damn reason \ud83d\ude0d @AppleSupport",
+        "true_label": "device_hardware",
+        "predicted_label": "general_complaint",
+        "confidence": 0.8893,
+        "runner_up": "other",
+        "runner_up_confidence": 0.079
+      },
+      {
+        "conversation_id": "1772187",
+        "text": "So I\ufe0f have 280 so I\u2019m going use this time to thank everyone following me even though I\ufe0f get annoying. Y\u2019all are the real ones. Now that I\ufe0f have 280 it\u2019s gonna g\u2026",
+        "true_label": "general_complaint",
+        "predicted_label": "software_bug",
+        "confidence": 0.6446,
+        "runner_up": "general_complaint",
+        "runner_up_confidence": 0.1022
+      },
+      {
+        "conversation_id": "1802996",
+        "text": "Can you make your iCal app stop deleting my saved date events, oh and stop doubling other's that would be great.",
+        "true_label": "software_bug",
+        "predicted_label": "account_icloud",
+        "confidence": 0.3189,
+        "runner_up": "other",
+        "runner_up_confidence": 0.3189
+      },
+      {
+        "conversation_id": "1906187",
+        "text": "I cannot use my iPhone after an upgrade - serious stuff - travel ticket to work as well as all communication. Please advise.",
+        "true_label": "software_bug",
+        "predicted_label": "connectivity",
+        "confidence": 0.4801,
+        "runner_up": "device_hardware",
+        "runner_up_confidence": 0.1793
+      },
+      {
+        "conversation_id": "2046588",
+        "text": "Jesus fucking Christ my phone keeps dying at like 90% y'all ain't shot prolly gon get a samsung @AppleSupport",
+        "true_label": "device_hardware",
+        "predicted_label": "general_complaint",
+        "confidence": 0.4879,
+        "runner_up": "software_bug",
+        "runner_up_confidence": 0.2015
+      },
+      {
+        "conversation_id": "2062504",
+        "text": "you have misspelled a word in your page.",
+        "true_label": "other",
+        "predicted_label": "software_bug",
+        "confidence": 0.6269,
+        "runner_up": "other",
+        "runner_up_confidence": 0.187
+      },
+      {
+        "conversation_id": "2693953",
+        "text": "@116333 Tim, I wrote you an email Through Apple about MacBook Pro I\u2019ve bought but not gotten. I don\u2019t expect this to help but no one at Apple has helped either.\u2026",
+        "true_label": "billing_purchases",
+        "predicted_label": "device_hardware",
+        "confidence": 0.3164,
+        "runner_up": "support_process",
+        "runner_up_confidence": 0.2509
+      },
+      {
+        "conversation_id": "718093",
+        "text": "your updates for #iPhone bite. Can't even connect to WiFi at @32366 #ditchiPhoneGoAndroid #iPhone7Horrible #sad #lotsofissues",
+        "true_label": "connectivity",
+        "predicted_label": "general_complaint",
+        "confidence": 0.5769,
+        "runner_up": "software_bug",
+        "runner_up_confidence": 0.1795
+      }
+    ]
+  },
+  "artifacts": [
+    "models/embedding_logreg_head.joblib",
+    "models/embedding_logreg_head.json",
+    "models/embedding_prototype.joblib",
+    "models/embedding_cache/",
+    "evaluation/results/embedding_results.json",
+    "evaluation/results/phase3_summary.json"
+  ]
+}
